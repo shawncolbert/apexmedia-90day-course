@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexMedia — 90-Day Agency Course</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#111;color:#f0f0f0;padding:16px;min-height:100vh;}
+.hdr{background:#0A0A0A;border:1px solid #222;border-radius:12px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.brand{font-size:16px;font-weight:600;color:#fff;}.brand span{color:#C9FF57;}
+.brand-sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:3px;}
+.pts{background:rgba(201,255,87,.1);border:1px solid rgba(201,255,87,.25);border-radius:8px;padding:6px 14px;text-align:center;}
+.pts-n{font-size:20px;font-weight:700;color:#C9FF57;}.pts-l{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.05em;}
+.pb-wrap{margin-bottom:12px;}
+.pb{height:7px;background:#222;border-radius:4px;overflow:hidden;}
+.pf{height:100%;background:linear-gradient(90deg,#C9FF57,#8ebe2c);border-radius:4px;transition:width .5s;}
+.pt{font-size:11px;color:rgba(255,255,255,.35);margin-top:5px;}
+.phase-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.ptab{font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;border:1px solid #333;color:#888;background:transparent;cursor:pointer;transition:all .2s;}
+.ptab:hover{border-color:#555;color:#ccc;}
+.ptab.on{background:#0A0A0A;color:#C9FF57;border-color:#C9FF57;}
+.phase-pnl{display:none;}.phase-pnl.on{display:block;}
+.week-hdr{font-size:11px;font-weight:600;color:#666;letter-spacing:.08em;text-transform:uppercase;padding:6px 0;margin:14px 0 8px;border-bottom:1px solid #222;}
+.day-row{background:#0D0D0D;border:1px solid #222;border-radius:10px;margin-bottom:7px;overflow:hidden;transition:border-color .2s;}
+.day-row:hover{border-color:#333;}
+.day-head{display:flex;align-items:center;gap:11px;padding:12px 16px;cursor:pointer;}
+.day-num{width:38px;height:38px;border-radius:8px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #2a2a2a;}
+.day-num span{font-size:10px;font-weight:600;color:#C9FF57;}
+.day-num.done-num{background:#1a2a12;border-color:#3B6D11;}
+.day-num.done-num span{color:#8ebe2c;}
+.day-info{flex:1;}
+.day-title{font-size:13px;font-weight:500;color:#f0f0f0;}
+.day-type{font-size:11px;margin-top:2px;}
+.type-lesson{color:#5b9bd5;}
+.type-action{color:#7bbf5a;}
+.chev{font-size:12px;color:#555;transition:transform .2s;margin-left:4px;}
+.chev.open{transform:rotate(180deg);}
+.done-check{font-size:15px;color:#8ebe2c;margin-left:4px;}
+.day-body{display:none;padding:16px;border-top:1px solid #1e1e1e;}
+.day-body.open{display:block;}
+.read-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:#C9FF57;color:#0A0A0A;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:14px;letter-spacing:.02em;}
+.read-btn:hover{background:#b8ee40;}
+.read-btn.reading{background:rgba(201,255,87,.12);color:#C9FF57;border:1px solid #C9FF57;}
+.stop-rd{display:none;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;background:transparent;color:#E24B4A;border:1px solid #E24B4A;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:12px;}
+.lesson-txt{font-size:13px;color:#aaa;line-height:1.9;margin-bottom:16px;}
+.lesson-txt p{margin-bottom:10px;}.lesson-txt p:last-child{margin-bottom:0;}
+.lesson-txt strong{color:#f0f0f0;font-weight:500;}
+.task-list{list-style:none;}
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #1e1e1e;font-size:13px;color:#aaa;}
+.task-item:last-child{border-bottom:none;}
+.task-cb{width:20px;height:20px;border-radius:5px;border:1.5px solid #333;flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:#0D0D0D;}
+.task-cb:hover{border-color:#555;}
+.task-cb.checked{background:#C9FF57;border-color:#C9FF57;}
+.task-cb.checked::after{content:'✓';font-size:12px;color:#0A0A0A;font-weight:800;}
+.task-txt{flex:1;line-height:1.6;}
+.task-txt strong{color:#f0f0f0;font-weight:500;}
+.quiz-wrap{margin-top:16px;border-top:1px solid #1e1e1e;padding-top:16px;}
+.quiz-lbl{font-size:12px;font-weight:600;color:#C9FF57;background:#111;border:1px solid rgba(201,255,87,.2);padding:9px 13px;border-radius:7px;margin-bottom:13px;}
+.qb{background:#111;border:1px solid #1e1e1e;border-radius:9px;padding:13px;margin-bottom:9px;}
+.qt{font-size:13px;font-weight:500;color:#f0f0f0;margin-bottom:10px;line-height:1.5;}
+.ch-wrap{display:flex;flex-direction:column;gap:5px;}
+.ch{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:7px;border:1.5px solid #2a2a2a;background:#0D0D0D;cursor:pointer;font-size:12px;color:#aaa;text-align:left;width:100%;transition:border-color .15s;}
+.ch:hover:not([disabled]){border-color:#444;color:#ccc;}
+.ch.sel{border:2px solid #C9FF57;background:#1a2800;color:#f0f0f0;font-weight:500;}
+.ch.sel .cl{background:#C9FF57;border-color:#C9FF57;color:#0A0A0A;font-weight:800;}
+.ch.correct{background:#0f1f0a;border:2px solid #3B6D11;color:#8ebe2c;font-weight:500;}
+.ch.correct .cl{background:#3B6D11;border-color:#3B6D11;color:#fff;}
+.ch.wrong{background:#1f0a0a;border:2px solid #8B2020;color:#e07070;font-weight:500;}
+.ch.wrong .cl{background:#8B2020;border-color:#8B2020;color:#fff;}
+.cl{width:22px;height:22px;min-width:22px;border-radius:50%;background:#1a1a1a;border:1.5px solid #333;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fb{display:none;margin-top:8px;padding:9px 11px;border-radius:7px;font-size:12px;line-height:1.65;}
+.fb.show{display:block;}
+.fb.c{background:#0f1f0a;color:#8ebe2c;border:1px solid #2a4a15;}
+.fb.w{background:#1f0a0a;color:#e07070;border:1px solid #4a1515;}
+.chk-btn{width:100%;padding:12px;margin-top:11px;background:#0A0A0A;color:#C9FF57;border:1px solid rgba(201,255,87,.3);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;}
+.chk-btn:hover:not([disabled]){background:#1a2800;}
+.chk-btn:disabled{opacity:.3;cursor:not-allowed;}
+.res-box{display:none;margin-top:9px;padding:11px 13px;border-radius:8px;font-size:13px;font-weight:600;text-align:center;}
+.res-box.pass{background:#0f1f0a;color:#8ebe2c;border:1px solid #2a4a15;}
+.res-box.fail{background:#1f150a;color:#d4882a;border:1px solid #4a2a10;}
+.mark-btn{width:100%;padding:11px;margin-top:12px;background:#111;color:#666;border:1px solid #2a2a2a;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;}
+.mark-btn:hover{border-color:#444;color:#aaa;}
+.mark-btn.marked{background:#0f1f0a;color:#8ebe2c;border-color:#2a4a15;}
+@media(max-width:600px){.hdr{flex-direction:column;align-items:flex-start;}.phase-tabs{gap:4px;}.ptab{font-size:12px;padding:7px 12px;}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div>
+    <div class="brand">Apex<span>Media</span> — 90-Day Agency Course</div>
+    <div class="brand-sub">All 3 phases · All 90 days · Read-aloud lessons · Quizzes · Task checklists</div>
+  </div>
+  <div class="pts"><div class="pts-n" id="gpts">0</div><div class="pts-l">points</div></div>
+</div>
+<div class="pb-wrap">
+  <div class="pb"><div class="pf" id="gpf" style="width:0%"></div></div>
+  <div class="pt" id="gpl">0 of 90 days complete</div>
+</div>
+<div class="phase-tabs">
+  <button class="ptab on" onclick="showPhase(1,this)">Phase 1 — Learn (Days 1–30)</button>
+  <button class="ptab" onclick="showPhase(2,this)">Phase 2 — Build (Days 31–60)</button>
+  <button class="ptab" onclick="showPhase(3,this)">Phase 3 — Scale (Days 61–90)</button>
+</div>
+<div id="phase1" class="phase-pnl on"></div>
+<div id="phase2" class="phase-pnl"></div>
+<div id="phase3" class="phase-pnl"></div>
+
+<script>
+var DATA=[
+{p:1,w:1,d:1,type:'lesson',title:'What does an ad agency do?',
+text:"An ad agency runs advertising for other businesses. That is the whole job in one sentence.\n\nA restaurant owner is great at cooking but has no idea how to get customers on Instagram or run Facebook ads. That is where you come in. You handle the marketing. They pay you every single month.\n\nYou will sell two things. Social media management — you post content, write captions, make graphics, and handle everything on social media for a monthly fee. And paid ads management — you run Facebook and Google ads for clients. The business pays for the ads separately. You charge a monthly fee to manage and run those ads.\n\nYour job is to get businesses more customers using the internet. Nothing more complicated than that.",
+qs:[{q:"What are the two core services you sell?",c:["Web design and video editing","Social media management and paid ads management","Accounting and branding","PR and event planning"],a:1,e:"Social media management and paid ads management. These two services alone can build a six-figure agency."},
+{q:"Why is the monthly retainer model powerful?",c:["Clients pay faster","You work fewer hours","You know exactly how much money is coming in every month","It is easier to sell"],a:2,e:"Recurring monthly income means you start every month with money already guaranteed. 5 clients at $1,000 each = $5,000 before you do a single new thing."}]},
+
+{p:1,w:1,d:2,type:'lesson',title:'The 15 marketing words you must know cold',
+text:"Impressions — how many times an ad was seen, even if someone scrolled past. Reach — how many different people saw it. Engagement — likes, comments, shares, saves.\n\nCTR or click-through rate — percentage who saw the ad and clicked. One to three percent is good. CPL or cost per lead — total spend divided by number of leads. ROAS or return on ad spend — revenue divided by ad spend. Three times minimum. Eight times is excellent.\n\nRetargeting — showing ads to people who visited the website but did not buy. They already know the business. Funnel — the journey from stranger to customer. Organic — free posting. Paid — running ads with money. Ad creative — the actual image or video in the ad. A great creative is the number one factor in whether an ad works or fails.",
+qs:[{q:"You spent $200 on ads and got 10 leads. What is the CPL?",c:["$200","$10","$20","$2"],a:2,e:"CPL = total spend ÷ leads. $200 ÷ 10 = $20 per lead."},
+{q:"A client spends $500 on ads and makes $4,000 from those ads. What is the ROAS?",c:["4,000","$3,500 profit","8x","80%"],a:2,e:"ROAS = revenue ÷ ad spend. $4,000 ÷ $500 = 8x. For every dollar spent they got eight dollars back."}]},
+
+{p:1,w:1,d:3,type:'action',title:'Set up all 8 free tools',
+tasks:["Create a free Canva account at canva.com — this is where you make all graphics and ad creatives","Download CapCut from the app store — this is how you edit Reels, TikToks, and YouTube Shorts","Create a Buffer account at buffer.com — this schedules your client posts automatically","Set up a Google Drive folder system — one main folder called ApexMedia, then one subfolder per client","Create a ChatGPT free account — your writing assistant for captions, copy, and emails","Set up Wave at wave.com — free invoicing to get paid professionally every month","Go to business.facebook.com and create a Meta Business Suite account — where all Facebook and Instagram ads are run","Go to analytics.google.com and create a Google Analytics account — tracks every visitor to a client website"]},
+
+{p:1,w:1,d:4,type:'lesson',title:'How Instagram\'s algorithm works',
+text:"Instagram's algorithm is a computer brain that decides who sees every post. Your job is to make it happy.\n\nRule one — post Reels. Instagram pushes short videos to far more people than photos because it competes with TikTok. A Reel is fifteen to ninety seconds. No Reels means almost no reach. Rule two — post four to five times per week. Consistency is rewarded. Show up every day and the algorithm promotes you. Rule three — saves and shares beat likes. When someone saves a post, Instagram shows it to far more people. Rule four — hook them in the first three seconds. People scroll fast. If your video does not grab attention immediately, they move on. Rule five — use five to ten specific local hashtags, not thirty generic ones.",
+qs:[{q:"Which content type does Instagram push to the most people?",c:["Regular photo posts","Stories","Reels — short videos","Text posts"],a:2,e:"Reels get pushed harder than any other format right now. Clients not posting Reels are missing the majority of their potential reach."},
+{q:"Post A gets 300 likes and 4 saves. Post B gets 80 likes and 50 saves. Which does Instagram promote more?",c:["Post A — more likes","Post B — saves are a much stronger signal","Same for both","Neither"],a:1,e:"Saves signal that content is so valuable someone wants to return to it. That is far stronger than a like. Saves and shares always win."}]},
+
+{p:1,w:1,d:5,type:'lesson',title:'How Facebook and Instagram ads work',
+text:"Every Facebook ad campaign has three levels. The Campaign sets the goal — leads, sales, or awareness. The Ad Set sets the audience, budget, and schedule. The Ad is the creative people actually see — the image or video and the text.\n\nFacebook knows your age, location, interests, purchase history, and browsing habits. You tell it exactly who to show the ad to and it does it automatically.\n\nAlways run two to three creatives at once and let them compete. After seven days, turn off the weakest and put more budget into the winner. This is A-B testing. The creative is the most important part — great creative with okay targeting still works. Great targeting with a boring creative always fails.",
+qs:[{q:"What are the three levels of a Facebook campaign in order?",c:["Ad, Ad Set, Campaign","Campaign, Ad Set, Ad","Audience, Budget, Creative","Objective, Targeting, Spend"],a:1,e:"Campaign sets the goal. Ad Set sets who sees it and what you spend. Ad is the creative they actually see."},
+{q:"After 7 days Ad A costs $10 per lead. Ad B costs $48 per lead. What do you do?",c:["Keep both running","Turn off Ad A","Pause Ad B and put more budget into Ad A","Start completely over"],a:2,e:"Pause the loser and fund the winner. $10 vs $48 — Ad A wins by a massive margin. This is how you improve results every month."}]},
+
+{p:1,w:1,d:6,type:'lesson',title:'Writing copy that sells — the PAS formula',
+text:"P stands for Problem. Hit the reader where they hurt. Tired of ads that bring zero customers? They nod yes. A stands for Agitate. Make it feel more urgent. Every month you lose money while competitors get all the calls. S stands for Solution. Here is the way out. At ApexMedia we track every dollar so you know exactly what works.\n\nExample for a plumber — Headline: Still waiting on a plumber who actually shows up? Body: Most homeowners waste hours waiting for someone who arrives late, gives a vague price, and leaves a mess. We show up on time, give a fixed price before we start, and clean up completely. Four hundred five-star reviews prove it. CTA: Book online in 60 seconds. Guaranteed same-day service.\n\nAlways end with a call to action telling the reader exactly what to do next. Book now. Call today. DM us FREE. Without it, people who were ready to buy just scroll away.",
+qs:[{q:"What does PAS stand for?",c:["Promote, Advertise, Sell","Problem, Agitate, Solution","Post, Analyze, Schedule","Pitch, Audience, Spend"],a:1,e:"Problem, Agitate, Solution. Call out pain, deepen it, present the escape. Works across every industry."},
+{q:"Which gym ad headline uses the Problem step of PAS best?",c:["We have great equipment","Join and save 20 percent","Tired of starting over every January and never seeing results?","Open 24 hours"],a:2,e:"It speaks directly to the reader's exact pain. They immediately think that is me and keep reading."}]},
+
+{p:1,w:1,d:7,type:'action',title:'Week 1 review — quiz yourself on everything',
+tasks:["Say out loud what the two main services of ApexMedia are — if you hesitate, re-read Day 1","Define these 5 words from memory: ROAS, CPL, CTR, retargeting, ad creative — if you miss any, re-read Day 2","Open Canva and confirm your account is set up and working","Open Meta Business Suite and confirm your account is active","Write the PAS formula from memory and write one example ad for any business using it"]},
+
+{p:1,w:2,d:8,type:'action',title:'Make your first 3 Canva graphics',
+tasks:["Open Canva and search for Instagram Post template — pick one that fits a restaurant or barbershop","Change the colors, headline, and logo to match a made-up brand you create right now","Make a before-and-after post: left side says Before, right side says After — add a fake business name","Make a 5-star review post: pull a fake quote, make it look shareable and clean","Make a tip post: 3 things your ideal customer needs to know — use bullet points","Download all 3 as PNG files and save them in a folder called Portfolio"]},
+
+{p:1,w:2,d:9,type:'action',title:'Film and edit your first Reel in CapCut',
+tasks:["Film a 30-second video on your phone — walk around and show 3 things, content does not matter, just practice","Open CapCut, import the video, and trim any dead air or pauses","Add text on screen using CapCut's text tool — put a bold line in the first 2 seconds as your hook","Add a song from CapCut's free music library","Turn on Auto Captions so your words appear on screen automatically","Export at 1080p and watch it back — ask yourself: would I stop scrolling for this in the first 3 seconds?"]},
+
+{p:1,w:2,d:10,type:'action',title:'Write 7 Instagram captions using ChatGPT',
+tasks:["Pick one business type as your practice client — gym, restaurant, barbershop, plumber, or any local service","Open ChatGPT and type this prompt: Write 3 Instagram captions for a [business type] called [name] in [city]. Target audience is [describe them]. Tone should be [warm/funny/professional]. Each caption should end with a question. Include 8 relevant hashtags.","Read every caption ChatGPT gives you out loud — edit anything that sounds robotic","Write 7 total captions — enough for a full week of posts","Save them in a Google Doc called Practice Client Captions"]},
+
+{p:1,w:2,d:11,type:'action',title:'Build your first content calendar template',
+tasks:["Open Google Sheets and create a new spreadsheet","Set up these column headers in row 1: Date, Day, Platform, Format, Topic, Caption Preview, Status","Fill in 4 weeks of posts for your practice client — 4 to 5 posts per week","Use these formats in the Format column: Reel, Carousel, Static, Story","Use these statuses: Draft, Approved, Scheduled, Posted","Save this file — this is your content calendar template you will use for every real client forever"]},
+
+{p:1,w:2,d:12,type:'action',title:'Portfolio day 1 — fake restaurant brand',
+tasks:["Create a fake restaurant in Canva — give it a name, pick a color scheme, and design a simple text logo","Make 6 Instagram posts: a food photo graphic, a daily special, a 5-star review post, a behind the scenes teaser, a menu highlight, and a call to action to book a table","Write a caption for each post using ChatGPT then edit to sound human","Create a Google Drive folder called Portfolio — Restaurant and drop all 6 posts inside","This is real portfolio work — it looks exactly like client work to any prospect"]},
+
+{p:1,w:2,d:13,type:'action',title:'Portfolio day 2 — fake home service company',
+tasks:["Create a fake home service business — plumber, HVAC, handyman, or lawn care — give it a name and simple branding","Make 6 Instagram posts: a before-and-after job photo, a tip post about common home problems, a guarantee post, a 5-star review, a seasonal special offer, and a why choose us post","Write all 6 captions and save them with the graphics","Create a Portfolio — Home Services folder in Google Drive and add everything","Look at both days of portfolio work — you now have 12 professional-looking content pieces"]},
+
+{p:1,w:2,d:14,type:'action',title:'Portfolio day 3 — fake fitness brand',
+tasks:["Create a fake gym or personal trainer brand — name it, pick bold colors, design a text logo","Make 6 Instagram posts: a transformation story post, a workout tip, a motivational quote graphic, a first week free offer, a coach introduction, and a client result","Write all 6 captions","Add to your Google Drive portfolio folder","Your portfolio now has 18 real-looking content pieces across 3 industries — this is what you show prospects when they ask to see examples of your work"]},
+
+{p:1,w:3,d:15,type:'lesson',title:'Setting up a Facebook ad campaign step by step',
+text:"Go to business.facebook.com and open Ads Manager. Click the green Create button. Choose your objective — for a local service business choose Leads. This tells Facebook to find people most likely to call or fill out a form.\n\nName your campaign clearly using this format: Business Name, Goal, Month, Year. Example: Iron Den Gym Lead Gen January 2026. Set up the Ad Set — choose location as a ten to fifteen mile radius around the business, set age and gender, add relevant interests.\n\nBuild the Ad creative — upload your Canva graphic or CapCut video. Write a headline under seven words. Write body copy using PAS. Choose a call-to-action button. Check the preview panel on the right. If estimated reach and leads look reasonable, your setup is correct.",
+qs:[{q:"Which objective do you choose for a local plumber who wants more calls?",c:["Brand Awareness","Traffic","Leads","Video Views"],a:2,e:"Leads tells Facebook's algorithm to find people most likely to fill out a form or make a phone call. Traffic just gets clicks that do not always become customers."},
+{q:"You set location to all of the United States for a local hair salon. Why is this wrong?",c:["It costs too much","You show the ad to people who can never visit the salon","Facebook rejects it","Too many clicks"],a:1,e:"People in California cannot visit a salon in Atlanta. Every dollar spent outside the local radius is completely wasted. Always set a 10 to 15 mile radius around the business."}]},
+
+{p:1,w:3,d:16,type:'lesson',title:'Google Local Service Ads — the most powerful ad for service businesses',
+text:"When someone types emergency plumber near me into Google they already have their wallet out. They are not browsing — they are ready to buy right now. This is called intent-based advertising and it is the most valuable type of lead.\n\nGoogle Local Service Ads, or LSAs, are the green Google Guaranteed listings that appear at the very top of search results above everything else. You only pay when someone actually calls the business — not for clicks, not for impressions, only for real phone calls.\n\nTo set up LSA go to ads.google.com and search for Local Services Ads. The business must pass a background check and license verification. Once approved, fill out the service area, business hours, and job types. Set a weekly budget. Google handles the rest and calls start coming in.",
+qs:[{q:"What makes Google Local Service Ads different from regular Google ads?",c:["They are cheaper","You only pay when someone actually calls the business","They show up below regular results","They work for all types of businesses"],a:1,e:"LSAs charge per phone call, not per click. This means you only pay when a real potential customer contacts the business — the highest quality lead type available."}]},
+
+{p:1,w:3,d:17,type:'action',title:'Write 15 Google Search ad headlines',
+tasks:["Pick a plumbing company as your practice client for today","Write 15 headlines using this format: Keyword + Benefit + Location — Example: Dallas Emergency Plumber — Same Day Service — 400 Five-Star Reviews","Every headline must be under 30 characters — Google enforces this limit strictly","Write 4 ad descriptions of 90 characters each that support your best headlines","Write a list of 20 keywords this plumber should target — example: emergency plumber dallas, plumber near me, water heater repair dallas","Write 10 negative keywords — words you do NOT want to trigger the ad — example: free, DIY, how to, plumbing school"]},
+
+{p:1,w:3,d:18,type:'lesson',title:'TikTok ads basics',
+text:"TikTok ads work differently from Facebook ads. On Facebook you target people based on demographics and interests. On TikTok, the algorithm is so good at figuring out who likes what that you often target broadly and let the platform find your audience for you.\n\nThe most important rule of TikTok ads is this: the ad must look like a normal TikTok video. Not a polished commercial. A real, raw, authentic video that blends into the feed. If it looks like an ad, people skip it instantly.\n\nTikTok Spark Ads let you boost an existing organic post from a client's account. This is the best way to start because the post already has social proof. Go to ads.tiktok.com to set up a TikTok for Business account. Choose Traffic or Lead Generation as your objective.",
+qs:[{q:"What is the most important rule of TikTok ads?",c:["Use the most professional production quality possible","The ad must look like a normal TikTok video, not a polished commercial","Always use celebrities in the ad","Target only women aged 18 to 24"],a:1,e:"TikTok users skip anything that looks like a traditional advertisement instantly. The ad must feel native to the platform — raw, real, and authentic — or nobody watches it."}]},
+
+{p:1,w:3,d:19,type:'lesson',title:'How to read ad reports — the numbers that matter',
+text:"When you open Meta Ads Manager you will see dozens of columns. Most of them do not matter. Focus on these five every single time.\n\nAmount Spent — how much of the budget has been used. Results — the number of leads or purchases generated. Cost Per Result — how much each lead or purchase cost. This is your CPL. CTR — click-through rate. How many people clicked out of everyone who saw the ad. Frequency — how many times on average each person has seen your ad. If frequency goes above three, people are getting ad fatigue and you need to refresh the creative.\n\nWhen you present results to a client, always lead with leads generated, cost per lead, and how that translates to potential revenue.",
+qs:[{q:"Which metric do you lead with in a client report?",c:["Impressions","Reach and follower growth","Leads generated and cost per lead tied to potential revenue","Total amount spent"],a:2,e:"Always tie results to revenue. Impressions and reach sound hollow. Leads generated at a specific cost that connects to a specific job value — that is what makes clients stay."},
+{q:"Your ad's frequency is now 4.2. What does this mean and what should you do?",c:["Great — more exposure is always better","People are seeing the ad too many times — refresh the creative immediately","Lower the daily budget","Increase the target audience size"],a:1,e:"Frequency above 3 means ad fatigue. People are tuning out. Create a new ad creative immediately and pause the old one. Fresh creative resets the audience response."}]},
+
+{p:1,w:3,d:20,type:'action',title:'Ad creative study day — train your eye',
+tasks:["Open Facebook, Instagram, and TikTok on your phone and scroll for 30 minutes with purpose","Every time you see an ad, stop. Ask yourself: Did I keep watching past 3 seconds? What was the hook? What is the offer? What does the CTA say?","Write notes on 10 ads — what worked, what did not, and why","Go to facebook.com/ads/library and search any brand you know — look at their active ads","Write down the top 5 things you noticed that make ads perform well — these are your creative principles"]},
+
+{p:1,w:3,d:21,type:'action',title:'Week 3 review — test your ads knowledge',
+tasks:["Build a full Facebook ad campaign for a fake gym in Ads Manager — Campaign: Leads objective — Ad Set: 10 mile radius, women 25 to 45, fitness interests — Ad: Canva graphic + PAS headline — Stop before hitting Publish","Can you name the 5 metrics you track in every ad report without looking?","Can you explain the difference between Facebook ads and Google LSA in plain English to someone who has never heard of either?","Can you describe what a TikTok Spark Ad is?","Write one cold DM to a local business that mentions a specific problem you noticed in their social media"]},
+
+{p:1,w:4,d:22,type:'action',title:'Build your agency Instagram account',
+tasks:["Create a new Instagram account with your agency name — example: apexmediaagency","Design a logo in Canva — simple, professional, two colors max — put it as your profile photo","Write your bio: We run social media and paid ads for local businesses. Results-focused. Book a free strategy call. Add a Calendly link.","Post your 3 best portfolio pieces immediately as 3 separate posts","Post a Reel introducing yourself: who you are, what you do, who you help, how to work with you — under 60 seconds","Follow 20 local business accounts in your city — restaurants, gyms, salons, home service companies"]},
+
+{p:1,w:4,d:23,type:'action',title:'Build your LinkedIn profile',
+tasks:["Create or update your LinkedIn profile — use a professional photo, even a clean phone selfie works","Headline: Founder at [Agency Name] — Social Media and Paid Ads for Local Businesses","About section: Write 3 sentences — who you are, who you help, how to reach you","Experience: Add your agency as your current position even if you just started today","Connect with 20 local business owners in your city — search your city name and filter by business owners","Post one tip about social media or ads that local businesses would find useful"]},
+
+{p:1,w:4,d:24,type:'action',title:'Create your proposal template',
+tasks:["Open Canva and create a 2-page PDF proposal template","Page 1: Your agency name and logo at top, client business name, date, and your tagline — Results-focused digital marketing","Page 2: Three sections — What We Will Do For You, What Is Included, and Pricing and Next Steps","Keep it clean and simple — black background with your brand color accents looks professional","Save as a Canva template so you can quickly customize it for each prospect after a discovery call","Practice: fill it out for one of your fake portfolio clients as if they were a real prospect"]},
+
+{p:1,w:4,d:25,type:'lesson',title:'The discovery call — word for word',
+text:"The discovery call is a 30-minute phone or video call with a business owner who is interested in working with you. This is the most valuable skill in your entire business. Get good at this and everything else follows.\n\nMinutes zero to three — small talk. Ask how business has been. Listen and take notes. People tell you everything you need to close them if you just stop talking and listen. Minutes three to ten — ask four questions. What is your biggest challenge getting new customers right now? What have you tried before and did it work? What does a great month look like for your business? If you could wave a magic wand what would your marketing look like in twelve months? Write down their exact words.\n\nMinutes ten to twenty — present your solution using their own words back to them. You said you are struggling to get consistent leads. Here is exactly what I would do for your business. Minutes twenty to twenty-five — state your price clearly and confidently. No apologies. No hesitation. My fee is $1,200 per month. Minutes twenty-five to thirty — ask Does that make sense, then go completely silent. Whoever speaks first loses the negotiation.",
+qs:[{q:"After you state your price there is silence. What do you do?",c:["Offer a discount immediately","Say I know it is a lot but...","Stay completely silent and wait for them to speak first","Start listing more services to fill the silence"],a:2,e:"Stay silent. This feels awkward but it is powerful. When you speak first you negotiate against yourself. Most of the time the prospect will say okay or ask a specific question — not no."},
+{q:"Why do you ask the four magic questions at the start of the call?",c:["To fill time while you plan your pitch","So you can use their exact words in your solution and make them feel completely understood","To find reasons they might not be a good client","To show them how much you know"],a:1,e:"The questions give you the exact words to use in your pitch and they make the prospect feel genuinely heard. People buy from people who truly understand their problem."}]},
+
+{p:1,w:4,d:26,type:'action',title:'Write 5 cold DM versions',
+tasks:["Write cold DM version 1 for a restaurant — mention something specific you noticed on their page and offer a free audit","Write cold DM version 2 for a gym — reference their posting inconsistency and explain what you could fix","Write cold DM version 3 for a home service company — note that their competitors are running Facebook ads and they are not","Write cold DM version 4 for a med spa or salon — comment on their engagement rate and suggest one improvement","Write cold DM version 5 for any local business you noticed today with weak social media","Read each one out loud — if it sounds like a sales pitch, rewrite it. It should sound like a helpful neighbor, not a telemarketer."]},
+
+{p:1,w:4,d:27,type:'action',title:'Role-play the discovery call',
+tasks:["Ask a friend or family member to play a skeptical local business owner for 30 minutes","Give them this script: they own a restaurant, they have tried Facebook ads before and they did not work, they want more customers but are not sure about paying for help","Run through the full 30-minute discovery call using the script from Day 25 — hit all five phases","Record it on your phone so you can watch it back","Watch the recording and note: where did you hesitate, where did you speak too fast, where did you sound unsure about your price","Do it a second time the same day and fix everything you noticed"]},
+
+{p:1,w:4,d:28,type:'action',title:'Send your first 20 outreach messages',
+tasks:["Go on Google Maps and search your city plus a business type — Dallas restaurants, Atlanta barbershops, Houston gyms","Find 20 businesses with weak or inactive social media — check Instagram for low follower count, infrequent posts, or low engagement","Open a Google Sheet and add columns: Business Name, Instagram Handle, DM Sent, Reply, Next Step","Write each message using your cold DM templates from Day 26 but personalize every one with one specific detail about their business","Send all 20 messages today — do not wait until they are perfect. Done is better than perfect.","Track every send in your Google Sheet"]},
+
+{p:1,w:4,d:29,type:'action',title:'Follow up and track your responses',
+tasks:["Check your DMs from yesterday — reply to anyone who responded within two hours","For everyone who has not replied yet, send one follow-up 48 hours after the first: Hey [name] just wanted to bump this up — did you get a chance to see my message?","Add reply status to your Google Sheet: No Reply, Replied Interested, Replied Not Interested, Discovery Call Booked","Book any discovery calls that come in — use Calendly free plan or just agree on a time directly","Reach out to 10 more businesses today to keep the pipeline full"]},
+
+{p:1,w:4,d:30,type:'lesson',title:'Phase 1 final exam — are you ready?',
+text:"You have completed 30 days of learning. Before Phase 2 starts, check every single skill honestly. Every gap costs you money later.\n\nYou know what you sell — social media management and paid ads on a monthly retainer. You know the key marketing words. Your tools are set up. You understand Instagram, Facebook ads, Google LSA, and TikTok ads. You can write PAS copy. You have a portfolio, a proposal template, and a discovery call script.\n\nYou have sent real outreach and tracked the responses. You have practiced the discovery call. You have made real content. Most people who say they want to start a marketing agency never get this far. You are already ahead.",
+qs:[{q:"A prospect says Facebook ads didn't work for us before. Best response?",c:["Agree and pitch Google ads instead","Say that surprises you and move on","Ask exactly what happened and diagnose the real problem — then show how you would fix it","Tell them ads don't work for every business"],a:2,e:"Diagnose the real failure. 90% of the time ads failed because of bad setup, wrong targeting, weak creative, or zero optimization. Your diagnosis positions you as the expert who can fix what others broke."},
+{q:"You sent 100 cold DMs and signed 1 client. Is this a good result?",c:["No — 100 messages for 1 client is terrible","Yes — this is a completely normal conversion rate, keep going and increase volume","Only if the client pays more than $1,000 per month","Only if you spent less than 2 hours on it"],a:1,e:"This is a healthy rate. 100 messages = approximately 1 client. Send 400 messages and you get approximately 4 clients. Never stop outreach even when you are busy with current clients."}]},
+
+{p:2,w:5,d:31,type:'action',title:'Build your free audit template',
+tasks:["Open Google Docs and create a new document called Client Marketing Audit Template","Add your agency logo and name at the top","Create 5 sections: Social Media Audit, Google Business Profile Audit, Website Audit, Paid Ads Audit, and Top 3 Recommendations","Social Media section columns: Platform, Follower Count, Posts Per Week, Avg Engagement Rate, Last Post Date, Score out of 10","Website section: Does it have a contact form, phone number, booking option, mobile-friendly design — yes or no for each","Save this as a template — you will fill it out for every prospect before getting on a call with them"]},
+
+{p:2,w:5,d:32,type:'action',title:'Do a practice audit on a real local business',
+tasks:["Pick one of the businesses from your outreach list and do a full audit using your template","Check their Instagram: follower count, last post date, posting frequency, engagement rate — divide average likes plus comments by followers times 100 for the percentage","Check their Google Business Profile: number of reviews, average star rating, are photos updated, is all information filled out","Check their website: is there a phone number visible above the fold, is there a contact form, can you book online, does it work on mobile","Check Facebook Ad Library at facebook.com/ads/library — are they running any active ads right now","Write your top 3 specific recommendations — very specific, not just post more but post 4 Reels per week targeting women 25 to 45 in your city"]},
+
+{p:2,w:5,d:33,type:'action',title:'Send a real audit to a prospect',
+tasks:["Take the audit you built yesterday and put it in a clean Google Doc or Canva PDF with your agency branding","Send it to the business owner with this message: I finished your free audit. I found 3 specific things that could get you more leads within 30 days. Would it be okay if I walked you through it on a quick 20-minute call? Completely free — no obligation.","This message has a very high reply rate because you are giving real value before asking for anything","Track the send in your outreach Google Sheet","Send 10 more cold DMs today to keep filling the pipeline"]},
+
+{p:2,w:5,d:34,type:'action',title:'Set up your contract system',
+tasks:["Go to hellosign.com or docusign.com and create a free account — both have free tiers that work fine","Search Google for social media management contract template free PDF — download one and read through every section carefully","Customize it with your agency name, fee structure, a 3-month minimum term, a 30-day cancellation notice requirement, and a statement that clients always own their own accounts","Upload it to your signing tool so it is ready to send the moment someone says yes","Practice: send a test contract to your own email and sign it so you know how the process works from your client's side"]},
+
+{p:2,w:5,d:35,type:'action',title:'Set up your invoicing system',
+tasks:["Log into your Wave account at wave.com — it is completely free for invoicing","Add your agency name, logo, and contact information to the account settings","Create an invoice template with your standard line items: Social Media Management Monthly Retainer, Paid Ads Management Monthly Retainer, One-Time Setup Fee","Connect your bank account or PayPal so clients can pay you directly from the invoice link","Send a test invoice to your own email — pay it and see exactly what your client will experience","Set up a recurring invoice for your first client the moment they sign — it sends automatically every month on the same date"]},
+
+{p:2,w:5,d:36,type:'action',title:'Send 20 more outreach messages',
+tasks:["Check every outstanding DM from the past week — follow up with anyone who has not replied using a simple bump message","Send 20 new DMs to businesses you have not contacted yet — keep the pipeline full at all times","Focus on businesses where you have a completed audit ready — you can offer to send it immediately when they reply","If anyone has replied and expressed interest, book a discovery call for this week — do not let interested prospects go cold","Update your tracking sheet: total messages sent, replies, calls booked, clients signed"]},
+
+{p:2,w:5,d:37,type:'lesson',title:'How to handle sales objections',
+text:"Every prospect will give you one of five objections. Learn the response to each one cold.\n\nObjection one: I need to think about it. Response: Of course. What specifically do you need to think through? I want to make sure I answered everything before we hang up. This uncovers the real concern.\n\nObjection two: It is too expensive. Response: I understand. What budget did you have in mind? Then either adjust the package to fit that budget or explain the ROI clearly — if your average job is $400 and we get you 15 new customers, that is $6,000 in new revenue from a $1,200 investment. That is a 5x return.\n\nObjection three: We tried this before and it did not work. Response: Tell me what happened. Then diagnose the failure. Objection four: I do not have time. Response: That is exactly why you need us — we handle everything so you never have to think about it. Objection five: I need to talk to my partner. Response: Of course. When can the three of us jump on a quick call together?",
+qs:[{q:"A prospect says it costs too much. What is the best response?",c:["Offer a 50% discount immediately","Say okay and end the call","Ask what budget they had in mind, then show the ROI math using their own numbers","Tell them your price is non-negotiable"],a:2,e:"Ask about their budget to understand the real gap, then show the ROI math. If their average job is worth $400 and you can reliably get them 15 new customers, the math closes the deal without you having to discount."}]},
+
+{p:2,w:6,d:38,type:'action',title:'Send the onboarding form to your new client',
+tasks:["Create your onboarding questionnaire in Google Forms — completely free","Include: business basics (name, website, location, hours, phone, what they sell, ideal customer, average transaction value, number 1 goal), brand assets (logo files, brand colors as hex codes, tone of voice), account access (add you as admin to Facebook Page, Instagram, Google Business Profile, Meta Business Manager — never ask for passwords)","Send the form link in your welcome email with a clear deadline: please complete this within 24 hours so we can start immediately","Set up their client folder in Google Drive: main folder with their business name, then subfolders for Brand Assets, Content Calendar, Ad Account, Monthly Reports"]},
+
+{p:2,w:6,d:39,type:'lesson',title:'Installing the Meta Pixel — do this on day one every time',
+text:"The Meta Pixel is a tiny piece of code that you install on a client's website once. After that it automatically tracks every single person who visits the site. This data is worth more than almost anything else in digital marketing.\n\nWith the Pixel you can retarget — show ads to people who visited the site but did not book or buy. You can build lookalike audiences — Facebook finds new people who behave exactly like the people who already visited. And you can track conversions — see exactly which ads led to real phone calls or form submissions.\n\nTo install: go to Meta Business Suite, then Events Manager, then Pixels, then Create a Pixel. Copy the pixel code. Then install it via the website platform's direct integration (Shopify, WordPress, Squarespace all have built-in Meta Pixel connections) or paste the code into the website header manually. Without the Pixel your ads are running blind.",
+qs:[{q:"What does the Meta Pixel do once installed on a website?",c:["Makes the website load faster","Tracks every visitor so you can retarget them and build lookalike audiences","Sends automatic emails to visitors","Improves the website's Google search ranking"],a:1,e:"The Pixel tracks every website visitor and sends that data to Facebook. This lets you retarget those visitors with ads and build lookalike audiences of people who behave like your best customers."}]},
+
+{p:2,w:6,d:40,type:'action',title:'Build the first content calendar for your client',
+tasks:["Open your content calendar Google Sheet template from Day 11","Update it with your client's business name, target platforms, and this month's dates","Plan 4 to 5 posts per week for the full month — 20 to 22 posts total","Mix the formats: at least 2 Reels per week, 1 carousel post, and 1 to 2 static graphics","Fill in a topic and brief caption idea for every post — you do not need the full caption yet, just the concept","Send the calendar to the client for approval: please review and approve or suggest changes by tomorrow at 5pm — I cannot begin creating content until this is approved"]},
+
+{p:2,w:6,d:41,type:'action',title:'Create the first 2 weeks of content',
+tasks:["Open Canva and create all graphics for posts 1 through 10 — batch everything at once, not one post at a time","Use ChatGPT to draft all 10 captions — use the detailed prompt format you learned on Day 10","Edit every caption until it sounds like a real human who loves their business wrote it — remove all robotic phrasing","Create any Reel scripts and film them or give the client a shot list if they are filming themselves","Organize everything by post date in a shared Google Drive folder for the client to review","Send for final approval before scheduling anything"]},
+
+{p:2,w:6,d:42,type:'action',title:'Schedule all content in Buffer',
+tasks:["Log into Buffer and connect your client's Instagram and Facebook Business Page — they need to give you admin access first","Take each approved post from Google Drive and schedule it in Buffer at optimal times: Tuesday through Friday between 9am and 11am or 7pm and 9pm tend to perform best for most local businesses","Double-check every scheduled post: right image, right caption, right hashtags, right time","Turn on Buffer's analytics so you can track which posts perform best — this data goes into the monthly report","You now have 2 full weeks of content going out automatically — this is the power of scheduling"]},
+
+{p:2,w:6,d:43,type:'action',title:'Launch your first real ad campaign',
+tasks:["Go to Meta Ads Manager for your client's account","Build the campaign: Leads objective, name it correctly with Business Name, Goal, Month, Year","Build 2 ad sets with different audiences — Ad Set 1 targets by interest in their service. Ad Set 2 targets broader local audience without interests to let Facebook optimize","Build 2 different ad creatives for each ad set — 4 ads total with different hooks to test messaging","Set the daily budget at $10 to $15 per day to start — enough to gather real data without overspending","Publish and screenshot the confirmation — you are officially running a live paid advertising campaign for a real client"]},
+
+{p:2,w:6,d:44,type:'action',title:'Send a Loom video walkthrough to your client',
+tasks:["Download Loom from loom.com — the free plan is all you need","Record a 3 to 5 minute screen recording walking your client through everything that is live: content calendar, first posts, ads manager with active campaigns, and what the numbers mean in plain English","Send the Loom link in an email with the subject line: Everything is live — here is a full walkthrough","This one video will make your client feel like they made the best decision of their business life — it shows professionalism, transparency, and care","Clients who receive a Loom walkthrough in their first week almost never cancel"]},
+
+{p:2,w:7,d:45,type:'lesson',title:'Your weekly agency routine — do this every single week',
+text:"Monday is your ad performance check. Log into every client's Ads Manager. Look at spend versus results. Is cost per lead improving, staying flat, or getting worse? Any ad with cost per lead more than double your target — pause it and create a new creative. Any ad performing better than expected — consider increasing the daily budget by 20 percent.\n\nTuesday is content creation day. Batch the next week of posts for all clients. Design in Canva, write captions in ChatGPT then edit, schedule everything in Buffer. Do this in one focused session.\n\nWednesday is outreach day. Send 15 to 20 new cold DMs or emails. Follow up with all open conversations. This is non-negotiable even when you are busy. The moment you stop reaching out, your pipeline dries up.\n\nThursday is client communication day. Reply to any messages. Send a quick mid-week note if there is anything worth sharing. Friday is analytics and planning. Pull the week's numbers for each client. Start planning next week's content.",
+qs:[{q:"Why is Wednesday outreach non-negotiable even when you already have clients?",c:["It is just a good habit","The moment you stop outreach the pipeline dries up and revenue drops weeks later","Clients expect you to be always finding new business","It impresses existing clients"],a:1,e:"Agency income drops silently. You stop reaching out when busy, clients eventually churn, and suddenly you have no pipeline. Always be reaching out — even just 15 messages on a Wednesday when you are slammed."}]},
+
+{p:2,w:7,d:46,type:'action',title:'Content batching day',
+tasks:["Open Canva and create all graphics for next week for every client — do them all at once, not one at a time","Open ChatGPT and write all captions in one session — use your detailed prompts for each client","Edit all captions to sound human and on-brand for each client — one client might be warm and funny, another professional and direct","Schedule everything in Buffer for the coming week — set every post at optimal times","This should take 2 to 3 hours maximum if you are batching properly — if it takes longer, identify where you are wasting time and build a faster system"]},
+
+{p:2,w:7,d:47,type:'action',title:'Outreach Wednesday — send 20 messages today',
+tasks:["Open your Google Maps outreach research and find 20 new businesses you have not contacted yet","Spend 2 minutes on each business's Instagram before messaging — note one specific thing to mention in your DM","Send all 20 personalized DMs before noon — do not spread this across the day","Follow up with everyone from last week who has not replied: Hey [name], just bumping this up in case it got buried — still happy to send over a free audit","Update your tracking sheet with today's sends","Book any discovery calls that come in today before end of day"]},
+
+{p:2,w:7,d:48,type:'action',title:'Client communication day',
+tasks:["Reply to every client message or email — aim to respond same day, within 2 hours during business hours","Send a brief check-in to each client: Hey [name], just checking in — how are things going? Are the leads converting? Any feedback from customers?","This 2-minute message shows you care, gives you data about lead quality, and deepens the relationship that keeps them paying","If any client has results worth celebrating, send them a short excited message — Your ad hit a 9x ROAS this week!","Log any important feedback in each client's Google Drive folder"]},
+
+{p:2,w:7,d:49,type:'action',title:'Friday analytics review and planning',
+tasks:["Pull the week's ad performance data for every client from Meta Ads Manager — copy key numbers into a tracking spreadsheet: spend, leads, CPL, CTR for each client","Check Buffer analytics to see which posts performed best this week — note the top performer and ask why it worked","Plan next week's content based on what worked — double down on the best performing formats and topics","Send each client a brief Friday update if there is something notable — keeps them engaged and shows your attentiveness","Review your revenue: what invoices are coming up, is everyone on autopay, are any payments overdue"]},
+
+{p:2,w:7,d:50,type:'action',title:'Start outreach for client 2',
+tasks:["Pick a specific industry niche to focus your outreach on today — the more specific the better, such as med spas only or roofing companies only","Research 30 businesses in that niche in your city — check each one for weak or inactive social media","Write a niche-specific cold DM version for this industry — reference a specific pain point that businesses in that niche commonly have","Now reference real results: I manage social media and ads for [type of business in your city] and in their first 30 days we generated [result] — I think I could do the same for you","Send 20 messages today and track them all"]},
+
+{p:2,w:7,d:51,type:'lesson',title:'How to upsell existing clients',
+text:"The easiest money in your agency is from clients who are already paying you. They trust you. They know you deliver. They have seen results. Selling them more is ten times easier than finding a new client.\n\nThe best time to upsell is during your monthly report call. After you walk through the great results, say: I have one idea for how we could accelerate this even more next month — want to hear it? They always say yes. Then pitch the next tier of service.\n\nCommon upsells: you are currently managing Instagram only — adding Facebook ads management for an extra $500 per month would put your ads in front of an entirely new audience and based on what we are seeing I think we could double the leads. Or: we are getting great results from Meta — adding Google Local Service Ads would capture all the people who are actively searching for your service right now. Always frame the upsell as what is best for their business — never as more money for you.",
+qs:[{q:"When is the best time to pitch an upsell to an existing client?",c:["On the very first call when they sign","During the monthly report call after showing them strong results","Whenever you need more money","Three months in regardless of results"],a:1,e:"The monthly report call after showing great results is the perfect moment. They are excited about what is working. Trust is high. They are already seeing ROI. The upsell feels like a natural next step rather than a sales pitch."}]},
+
+{p:2,w:8,d:52,type:'action',title:'Discovery call prep for your second prospect',
+tasks:["Review your discovery call script from Day 25 — read through the full flow one more time","Look up the prospect's business online before the call: check their social media, Google reviews, website, and Facebook Ad Library","Write down 3 specific observations about their marketing that you will reference on the call — specific always sounds more credible than general","Write down the ROI math for their business: what is their average job value, how many leads per month would make a meaningful difference","Practice stating your price confidently out loud three times before the call — this small exercise removes hesitation"]},
+
+{p:2,w:8,d:53,type:'action',title:'Run the discovery call and close client 2',
+tasks:["Run the full 30-minute discovery call following the script: 0-3 small talk, 3-10 four magic questions, 10-20 present solution using their exact words, 20-25 state price with full confidence, 25-30 ask does that make sense and go silent","Take notes throughout — write down their exact words when they describe their problem, these go into the proposal","At the end say: I will send you the proposal and contract tonight — if everything looks good you can sign online and we start immediately","Send the proposal within 2 hours of hanging up while their excitement is still fresh"]},
+
+{p:2,w:8,d:54,type:'action',title:'Send the proposal same day — within 2 hours of the call',
+tasks:["Open your Canva proposal template and customize it for this specific prospect — use their business name, reference exactly what they told you on the call, include the services and price you discussed","Export as a PDF and send via email with the subject: Your ApexMedia Proposal — [Business Name]","Include the contract link from your DocuSign or HelloSign account in the same email","Include the Wave invoice link so they can pay the first month immediately upon signing","End the email with: If you have any questions I am available by phone or text — looking forward to working together"]},
+
+{p:2,w:8,d:55,type:'action',title:'Follow up on the proposal',
+tasks:["If you have not heard back 24 hours after sending the proposal, send one follow-up: Hey [name], just checking in on the proposal — any questions I can answer for you?","If still no reply after 48 more hours: Hey [name], I want to make sure this is still the right time for you — no pressure, just let me know","If they reply with a concern, address it directly using your objection handling from Day 37","If they go completely silent after 3 attempts, move on — add them to a follow-up list to check back in 30 days","Continue sending your 20 daily outreach messages regardless of what happens with this one prospect"]},
+
+{p:2,w:8,d:56,type:'lesson',title:'How to deliver a great monthly report',
+text:"The monthly report is your most powerful client retention tool. Clients who receive a clear, well-designed report every single month almost never cancel. Clients who hear nothing cancel in month two.\n\nYour report has five sections. Section one — summary. What we did this month in plain English. Two to three sentences. Section two — social media results. Follower growth, top 3 posts with screenshots, reach, and engagement rate. Section three — ad results. Total spend, number of leads, cost per lead, and how those leads translate to potential revenue. Section four — what worked and what did not. Be honest. Section five — the plan for next month.\n\nAlways connect numbers to money. Do not say we generated 18 leads. Say we generated 18 leads at $14 each — if you close 30 percent of them at your $400 average job value that is $2,160 in new revenue from $252 in ad spend. Send the report as a PDF or record a Loom video walkthrough on day 28 of every client month without exception.",
+qs:[{q:"What is the most important thing to include in every monthly report?",c:["A long list of everything you did","Lots of screenshots of social media posts","Numbers connected directly to revenue — not just leads but what those leads could be worth in dollars","Your agency logo and branding"],a:2,e:"Always tie metrics to revenue. Leads generated at a specific cost connected to a specific job value — that is what makes clients see the value clearly and stay month after month."}]},
+
+{p:2,w:8,d:57,type:'action',title:'Deliver the month 1 report to client 1',
+tasks:["Pull all data from Meta Ads Manager: spend, leads, cost per lead, CTR for the month","Pull social media data from Buffer analytics and Instagram Insights: follower growth, reach, top posts","Build the report in Canva or Google Slides using the 5-section structure from Day 56 — make it visual with big numbers and screenshots","Record a 3 to 5 minute Loom video walkthrough of the report — talk through every number in plain English and connect everything back to their revenue","Send the report and Loom link on day 28 of the month without being asked — proactive reporting separates great agencies from average ones","End the email with your soft upsell: I have one idea for getting even more from your budget next month — want me to share it on a quick 15-minute call?"]},
+
+{p:2,w:8,d:58,type:'action',title:'Ask for a referral and a Google review',
+tasks:["Send this message to client 1: I am really glad things are going well. Would you be open to leaving us a quick Google review? It only takes 2 minutes and it helps us a lot. Here is the direct link: [your Google Business Profile review link]","Then ask for a referral: Also — do you know any other business owners who could use help with their marketing? For anyone you refer who signs on, I will give you one month at a reduced rate as a thank you.","These two asks cost you nothing and are the most powerful growth levers in your business","Add any referrals to your outreach tracking sheet immediately and reach out the same day"]},
+
+{p:2,w:8,d:59,type:'action',title:'Fully onboard client 2',
+tasks:["Send the welcome email and onboarding form within the same hour they sign and pay","Set up their Google Drive client folder with all subfolders","Request and receive all account admin access — Facebook Page, Instagram, Google Business Profile, Meta Business Manager","Install the Meta Pixel on their website","Audit their existing social media presence and take before screenshots","Build their first content calendar and send for approval within 72 hours of signing — this fast start builds immediate trust"]},
+
+{p:2,w:8,d:60,type:'lesson',title:'Phase 2 graduation — you now run a real agency',
+text:"Phase 2 is complete. You have gone from having zero clients to running a real operating agency. You have signed at least one and likely two paying clients. You have delivered real results and proven you can do the job.\n\nHere is what Phase 3 is about. Getting from one or two clients to five or six. Raising your prices to what you are actually worth. Building systems called SOPs so everything runs the same way every time. And making your first hire so you can stop doing everything yourself and start running the business.\n\nThe difference between Phase 2 and Phase 3 is not more skill. You already have the skill. The difference is volume and leverage. More outreach, more clients, better systems, and eventually other people doing the execution while you focus on strategy and sales.",
+qs:[{q:"What is the main goal of Phase 3?",c:["Learn more marketing skills","Get to 5 to 6 clients, raise prices, build systems, and make your first hire","Find a business partner","Move to a different city and work remotely"],a:1,e:"Phase 3 is about scale, not skill. You already know how to do the work. Now it is about doing more of it faster with better systems and eventually with help from other people."}]},
+
+{p:3,w:9,d:61,type:'action',title:'Scale to 20 outreach messages every single day',
+tasks:["Today starts a non-negotiable daily habit: 20 cold DMs or emails every morning before 10am — no exceptions, no excuses","Set a phone alarm for 8am labeled OUTREACH — treat it like a meeting you cannot cancel","Open your tracking sheet and find 20 businesses you have not contacted yet — research takes 1 minute per business max","Send all 20 personalized messages in 30 minutes — you have done this enough times now that it should not take longer","The math: 20 messages per day, 5 days per week = 100 per week = approximately 1 new client per week at your current conversion rate = potentially 4 new clients per month","Track every send, reply, and booking in your Google Sheet"]},
+
+{p:3,w:9,d:62,type:'lesson',title:'Cold email outreach strategy',
+text:"Cold email reaches business owners who are not active on Instagram DMs. It is more formal than a DM but can be just as effective with the right approach.\n\nSubject line is everything. It determines whether the email gets opened at all. Best subject lines are short and specific: Quick idea for [Business Name], or Question about [Business Name], or Noticed something about your marketing. Never write subject lines like: Partnership Opportunity or I Can Help Your Business Grow — those get deleted without opening.\n\nThe email body follows a simple three-paragraph format. Paragraph one: I came across [Business Name] on Instagram and noticed [specific observation]. Paragraph two: I run a local marketing agency and I help [their industry] businesses get more customers through social media and ads. I think I can show you 3 specific improvements that could get you more leads within 30 days. Paragraph three: Would it be okay if I sent over a free audit? No obligation — I just like showing business owners what I see. Keep the whole email under 120 words. Short emails get read. Long emails get deleted.",
+qs:[{q:"Which cold email subject line is most likely to get opened?",c:["Partnership Opportunity — Let's Grow Together","I Can Help Your Business Get More Customers","Quick idea for [Business Name]","Digital Marketing Services Available"],a:2,e:"Short, specific, and personal subject lines get opened. Anything that sounds like a mass email or a sales pitch goes straight to trash. Quick idea for [Business Name] sounds like it was written just for them."}]},
+
+{p:3,w:9,d:63,type:'action',title:'LinkedIn outreach — reach business owners where they work',
+tasks:["Log into LinkedIn and search your city name — filter results by People, then by Connection Type: 2nd connections, and by Industry: whichever industry you are targeting this week","Send 20 connection requests today with a personal note — under 150 characters: Hey [name] — I noticed you run [Business Name] in [City]. I work with local businesses on social media and ads. Would love to connect.","When anyone accepts your connection request, send a follow-up within 24 hours: Thanks for connecting. I actually took a quick look at [Business Name] online and I have a couple of ideas I think could help. Would you be open to a quick call?","LinkedIn outreach converts slower than Instagram DMs but prospects are often more serious with bigger budgets","Add all LinkedIn prospects to your main tracking sheet"]},
+
+{p:3,w:9,d:64,type:'action',title:'Build your follow-up sequence',
+tasks:["Create a Google Sheet called Outreach Follow-Up Sequence with columns: Name, Business, Platform, First Contact Date, Follow-Up 1 Date, Follow-Up 2 Date, Follow-Up 3 Date, Status","The sequence: Day 1 — send first message. Day 3 — if no reply, send one-line bump: Hey [name] just wanted to make sure this did not get buried. Day 7 — if still no reply, send your free audit or one specific observation. Day 14 — final follow-up: Hey [name] — I will stop reaching out after this. If the timing ever changes feel free to reach back out.","This last message often gets replies because it creates a moment of finality","Add every current prospect to this sheet and schedule your follow-up dates","Consistent follow-up is where most of your signed clients will come from — most people say yes on message 2, 3, or 4, not message 1"]},
+
+{p:3,w:9,d:65,type:'action',title:'Book and prepare for discovery call number 3',
+tasks:["Follow up on all your strongest outreach conversations from the past two weeks — who has replied and expressed interest but not booked a call yet?","Reach out directly: I have a few slots open this week — would you have 30 minutes for a quick strategy call? I can show you exactly what I would do for your business with no obligation.","Before the call, research the prospect for 10 minutes: Instagram, Google reviews, Facebook Ad Library, website — come prepared with 3 specific observations","Review your pricing: by client 3 your rate should be $1,000 to $1,500 per month","Practice your price delivery once before the call — say I charge $1,200 per month out loud with zero hesitation"]},
+
+{p:3,w:9,d:66,type:'action',title:'Sign client 3',
+tasks:["Run the discovery call using the script — four questions, present with their words, state price confidently, go silent after asking does that make sense","Send the proposal and contract within 2 hours of the call ending","Send the first invoice in the same email as the contract — make it as easy as possible to say yes and pay in the same session","If they do not sign within 48 hours, send one specific follow-up addressing the most likely concern you heard on the call","When they sign: send the welcome email immediately, set up their Google Drive folder, send the onboarding form — move fast, the first 48 hours set the tone for the entire relationship"]},
+
+{p:3,w:9,d:67,type:'action',title:'Week 9 review — check your numbers',
+tasks:["Count your total clients right now — how many are actively paying you?","Calculate your current monthly recurring revenue — total monthly fees from all active clients combined","Are you at $3,000 per month yet? If yes — excellent. If not — what is the gap and how many more clients do you need?","Review your outreach tracker — how many messages sent total this week? How many replies? How many calls booked?","Write down your 3 biggest lessons from Phase 3 so far — what surprised you, what was harder than expected, what worked better than expected"]},
+
+{p:3,w:10,d:68,type:'lesson',title:'What is an SOP and why you need them right now',
+text:"SOP stands for Standard Operating Procedure. It is a step-by-step checklist that describes exactly how to do something so it gets done the same way every single time.\n\nRight now everything in your agency lives in your head. You know how to onboard a client but it is different every time. You know how to run a monthly report but you always miss something. When you eventually hire someone, you will have nothing to hand them. SOPs fix this.\n\nYou need five SOPs to run ApexMedia professionally. Client onboarding SOP. Monthly content creation SOP. Ad campaign setup SOP. Monthly reporting SOP. Client offboarding SOP. Build these five and your agency becomes a system, not just you scrambling every month.",
+qs:[{q:"What is the most important reason to build SOPs right now?",c:["To impress clients with your organization","So you can hand them to a future hire and so every client gets the same consistent quality every time","Because all successful agencies have SOPs","To make your agency look bigger than it is"],a:1,e:"SOPs make your agency a system instead of just you doing everything differently each time. When you hire someone, you hand them the SOP and they can do the work to your exact standard without constant supervision."}]},
+
+{p:3,w:10,d:69,type:'action',title:'Write your onboarding SOP',
+tasks:["Open Google Docs and create SOP — Client Onboarding","Write every single step from the moment a client signs to the day their first content goes live","Include: send welcome email (exact template), send onboarding form (link), set up Google Drive folder (folder structure), request account admin access (step by step), install Meta Pixel (instructions), audit existing presence, build first content calendar, create first batch of content, send for approval, schedule in Buffer, launch first ad, send Loom walkthrough","Be so specific that someone who has never done this before could follow it perfectly","This document should take about 90 minutes to write and will save you hours every single month forever"]},
+
+{p:3,w:10,d:70,type:'action',title:'Write your content creation SOP',
+tasks:["Open Google Docs and create SOP — Monthly Content Creation","Document every step: review content calendar for the coming month, open Canva and batch all graphics using client brand templates, open ChatGPT and write all captions using saved client prompts, review and edit all captions for tone and brand voice, organize files in Google Drive by post date, send to client for approval with deadline, make requested changes within 24 hours, schedule all approved content in Buffer at optimal times, confirm all scheduled posts appear correctly","Write every step with enough detail that someone else could follow it without asking you a single question","Include your ChatGPT prompt templates for each client type as a reference in the same document"]},
+
+{p:3,w:10,d:71,type:'action',title:'Write your ad campaign setup SOP and monthly reporting SOP',
+tasks:["Create SOP — Ad Campaign Setup: document every step from creating the campaign structure, naming conventions, audience setup, pixel installation check, creative upload, copy writing, review, and launch — include a pre-launch checklist that must be completed before hitting publish","Create SOP — Monthly Report: document exactly how you pull data from Meta Ads Manager, Buffer, and Google Analytics, how you fill in the report template, how you record the Loom video, and how you send the final deliverable","Add both documents to a Google Drive folder called Agency SOPs","You now have four of your five critical SOPs — the fifth is client offboarding, which you will write the first time a client cancels"]},
+
+{p:3,w:10,d:72,type:'lesson',title:'When and how to raise your prices',
+text:"If you started at $500 to $750 per month, you have underpriced yourself to win those first clients. That was the right strategy to build proof and confidence. But now you have results, case studies, and a track record. It is time to charge what you are worth.\n\nNew clients from now on start at $1,000 to $1,500 per month minimum. Never go below this. Your experience, your systems, and your results justify this rate completely.\n\nExisting clients get a rate increase at the 3-month mark if you have delivered results. Here is the exact script: I have really enjoyed working with you and based on the results we have gotten together I am increasing my rates for new clients. I want to keep working with you. Starting next month your investment will go from $750 to $1,000 per month — same services, just reflecting the real value of what we are delivering together. Does that work for you? Clients who have seen real results will say yes almost every time.",
+qs:[{q:"How do you handle the price increase conversation with an existing client?",c:["Just raise the price on the next invoice without warning","Tell them on a call that prices are going up industry-wide","Reference the results you have delivered together and frame it as reflecting the real value you have created","Offer them a discount to stay at the old rate"],a:2,e:"Always connect the price increase to the results you have delivered. You are raising it because you have proven the value and your rate now reflects that. Results-based pricing increases are almost never rejected."}]},
+
+{p:3,w:10,d:73,type:'action',title:'Have the price increase conversation with your first client',
+tasks:["Review the results you have delivered for your first client over the past 60 days — leads generated, ROAS, follower growth, engagement improvements","Write down three specific results you will reference in the conversation","Schedule a quick 10-minute call with the client or send the message from the Day 72 script via email or text","Be completely confident — you have earned this. You have delivered real results and your rate is still well below what larger agencies charge","If they say yes, update the next invoice immediately","If they push back, offer a middle ground — instead of going from $750 to $1,000, offer $850 as a compromise — but never stay at the same rate if you have proven your value"]},
+
+{p:3,w:10,d:74,type:'action',title:'Week 10 review — your agency systems check',
+tasks:["Open your Google Drive Agency SOPs folder — do you have all four SOPs written and complete?","Look at your pricing: are all new clients being quoted at $1,000 or more?","Count your total monthly recurring revenue right now — what is the exact number?","Review your weekly routine from Day 45 — are you consistently doing Monday ad checks, Tuesday batching, Wednesday outreach, Thursday client comms, and Friday analytics?","Write down the one thing taking up the most time in your week and ask: could this be done with a better system, a template, or eventually by someone else?"]},
+
+{p:3,w:11,d:75,type:'lesson',title:'When and how to hire your first person',
+text:"When you have three or more clients, creating all the content yourself starts eating your entire week. That is the signal. You are ready to hire.\n\nYour first hire should not be a salesperson. You are still the best salesperson for your own agency. Your first hire should be a content creator or virtual assistant — someone who does the execution so you can focus on sales, strategy, and client relationships.\n\nOption one is a virtual assistant from the Philippines via OnlineJobs.ph. Full-time for $400 to $600 per month. They follow your SOPs exactly. They can make Canva graphics, write first-draft captions, schedule posts in Buffer, and pull monthly report data. Option two is a local freelance content creator paid per project — $15 to $25 per graphic, $50 to $75 per Reel.\n\nThe hiring rule: only hire when the hire pays for itself. A $500 per month VA frees you up enough time to close one more client at $1,000 per month. The hire costs $500 and generates $1,000. That is a 2x return.",
+qs:[{q:"What should your first hire be able to do?",c:["Find new clients and close deals","Make Canva graphics, write first-draft captions, schedule posts, and pull report data — following your SOPs exactly","Run ads independently without your involvement","Handle client calls and discovery calls"],a:1,e:"Your first hire does the execution work so you can focus on sales and strategy. They follow your SOPs, you review and approve. Never hire a salesperson first — you are still the best seller for your own brand."}]},
+
+{p:3,w:11,d:76,type:'action',title:'Post a job listing for your first hire',
+tasks:["Go to onlinejobs.ph and create a free employer account","Write a clear job post: Job Title — Social Media Content Creator VA, Hours — 20 to 40 hours per week, Rate — $4 to $7 per hour which is competitive in the Philippines, Required Skills — Canva, basic video editing, caption writing, Buffer or similar scheduling tool, English communication, attention to detail","Be very specific about the work: creating social media graphics in Canva following provided brand templates, writing first-draft captions from provided briefs, scheduling approved posts in Buffer, pulling monthly metrics and formatting them into a report template","Mention that you will provide full training via Loom video SOPs","Post the same job on Upwork as a backup"]},
+
+{p:3,w:11,d:77,type:'action',title:'Review applications and give a paid test project',
+tasks:["Review all applications that came in — look for clear English writing, attention to detail in the application itself, and a portfolio or examples of Canva work","Shortlist your top 3 to 5 candidates","Send each shortlisted candidate a paid test project: Here are brand guidelines for a sample client. Please create 3 Instagram posts in Canva following these guidelines. You will be paid $25 for your time regardless of whether we move forward. Please submit within 48 hours.","Review the test submissions honestly: does it match the brand guidelines, is the quality good enough to post for a real client, did they follow instructions correctly and on time","These three criteria — quality, brand accuracy, and deadline adherence — tell you everything you need to know about a candidate"]},
+
+{p:3,w:11,d:78,type:'action',title:'Hire your VA or content creator',
+tasks:["Choose the strongest candidate from the test project round — if multiple were excellent, hire your top choice","Send an offer via email or the platform: We loved your test project. We would like to offer you a part-time position starting this week. Your rate will be $[X] per hour for approximately [X] hours per week.","Set up their access: add them as a Canva team member, give them access to specific Google Drive folders they need, and set up a shared project management space in Notion or Trello — both free","Set clear expectations from day one: how you communicate (WhatsApp or Slack), how you give feedback, what the turnaround time expectation is for all tasks, and how and when they get paid"]},
+
+{p:3,w:11,d:79,type:'action',title:'Walk your hire through your SOPs on Loom',
+tasks:["Record a Loom video walking through your content creation SOP — show exactly how you do each step so they can replicate it","Record a second Loom showing how to use your Canva brand templates for each client — be very specific about what can and cannot be changed","Record a third Loom showing how you write captions — what tone, what structure, what ChatGPT prompt to use, and how to edit the output","Send all three Loom videos and tell them: please watch all three videos and then do a test run — create one practice post for [client name] following the SOP exactly and send it to me for review before posting anything live","Review their first five pieces of work very carefully and give specific, kind feedback — the first two weeks of training determine the quality you get for months"]},
+
+{p:3,w:11,d:80,type:'action',title:'Delegate first client\'s content to your hire',
+tasks:["Pick one client and hand their content creation over to your VA this week — keep all other clients yourself until you are confident in the quality","Give your VA the client's brand guide, content calendar for the coming week, and the relevant SOPs","Set a review checkpoint: all content must be submitted to you for review by Wednesday each week, you approve or request changes, your VA makes changes by Thursday, you schedule everything in Buffer by Friday","Your job this week shifts: you are no longer the person making graphics and writing captions for this client — you are the quality reviewer and approver","This is leverage. You are now getting paid for a client's work that you are spending 30 minutes reviewing instead of 4 hours creating."]},
+
+{p:3,w:11,d:81,type:'action',title:'Week 11 review — your team and revenue check',
+tasks:["Is your hire delivering quality work on time? If yes — start delegating a second client next week. If no — identify exactly what needs improvement and have a direct conversation about expectations","What is your current monthly recurring revenue? You should be approaching $4,000 to $5,000 per month by now","How many hours per week are you personally working IN the business versus ON the business? Working in: doing the execution. Working on: doing sales, strategy, client relationships. Your goal is to shift more time to ON.","Write down the next client you want to sign and what outreach you will do this week to close them"]},
+
+{p:3,w:12,d:82,type:'action',title:'Get client 4',
+tasks:["Pull up your strongest outstanding prospect from your tracking sheet — who is the most interested person you have not closed yet?","Reach out directly: Hey [name] — I wanted to circle back. I just finished up onboarding a new client in [their industry] and I have one more opening this month for a business I can give real attention to. Would you be open to that 30-minute strategy call we talked about?","Run the discovery call with full confidence — you have done this multiple times now, you have results to reference, you have case studies to share","Close at $1,200 to $1,500 — your skills, results, and systems justify this rate completely","After signing, run the full onboarding process from your SOP — every single step, no shortcuts"]},
+
+{p:3,w:12,d:83,type:'action',title:'Check your $5,000 per month revenue target',
+tasks:["Calculate your exact current monthly recurring revenue: add up every client's monthly fee","Are you at $5,000 per month? If yes — write down what you did right and repeat it. If not — how far are you and what is the specific gap?","At 4 clients averaging $1,200 per month you are at $4,800 — you are essentially there","Review your client roster: are all clients on month-to-month retainers? Is anyone at risk of canceling? What can you do to strengthen those relationships this week?","Plan your path to $10,000 per month — how many clients at what average rate gets you there and how long will it realistically take at your current outreach pace?"]},
+
+{p:3,w:12,d:84,type:'lesson',title:'How to build case studies that close deals',
+text:"A case study is a before-and-after story about a real client. It is the single most powerful sales tool you have because it shows proof that you actually do what you say you do.\n\nA great case study has four parts. The problem — what was the client's situation before working with you. The solution — what you specifically did. The results — specific numbers: leads generated, cost per lead, revenue attributed, follower growth, ROAS. The quote — one or two sentences from the client about their experience.\n\nFormat it as a simple one-page PDF in Canva. Put it on your agency Instagram. Send it to prospects during follow-up. Reference it on discovery calls: I actually worked with a similar business recently — in their first 90 days we generated 64 leads at $14 each. Your business has a similar profile so I expect we would see comparable results.\n\nYou need three case studies — one for each main industry you have worked in. With three case studies you have proof for almost any prospect you will ever talk to.",
+qs:[{q:"What are the four parts every great case study must have?",c:["Mission, vision, values, and goals","The problem, the solution, the specific results, and a client quote","Services offered, pricing, timeline, and deliverables","Before photos, after photos, testimonial, and price"],a:1,e:"Problem shows you understood their situation. Solution shows what you did. Specific numbers show it actually worked. Client quote gives social proof from a real person. All four together make a case study that closes deals."}]},
+
+{p:3,w:12,d:85,type:'action',title:'Write 3 case studies from your real results',
+tasks:["Pick your three strongest client results so far — the ones with the most impressive numbers","For each one write: The problem in 2 sentences, The solution in 3 to 4 sentences (exactly what you did), The results in bullet points with specific numbers only — leads, CPL, ROAS, follower growth, revenue generated, The quote — ask the client for one or two sentences about their experience","Design each case study as a clean one-page PDF in Canva using your agency brand colors","Add all three to a Google Drive folder called Case Studies and also post them on your agency Instagram as carousel posts","From now on send the most relevant case study to every single prospect before or after the discovery call"]},
+
+{p:3,w:12,d:86,type:'action',title:'Set up your referral system',
+tasks:["Email every current and past client with this message: I am really glad things are going well. I am looking to take on a couple more businesses this month. Do you know any other business owners who could use help with their marketing? For anyone you send my way who signs on I will give you one full month at a reduced rate as a thank you.","Create a simple tracking system: add a column to your client sheet called Referrals Sent","Follow up with any referrals the same day you receive them — strike while the iron is hot","Referrals convert at a much higher rate than cold outreach because they come with built-in trust. One active referral system can replace 50 percent of your cold outreach efforts once you have 5 or more happy clients"]},
+
+{p:3,w:12,d:87,type:'action',title:'Plan your next 90 days',
+tasks:["Open a Google Doc and write your next 90-day targets: revenue goal, number of clients goal, team goal, and one skill you want to develop further","Revenue target: $10,000 per month by day 180 — is this achievable at your current pace? What needs to change?","Client target: how many clients at what average monthly rate gets you to $10,000?","Team target: is your current VA handling the workload well? Do you need a second hire in the next 90 days?","Niche target: which industry have you gotten the best results in so far? Could you go all-in on that niche and become the go-to agency in your city for it?","Write a specific action plan for Week 1 of your next 90 days — what are the 3 most important things you will do on Monday morning?"]},
+
+{p:3,w:13,d:88,type:'action',title:'Full revenue and expense review',
+tasks:["List every client and their monthly fee — add them up for your total monthly recurring revenue","List every business expense: any paid tools, contractor payments to your VA, any ad spend for your own agency marketing, any platform subscriptions","Subtract expenses from revenue — this is your monthly profit","What percentage of your revenue is profit? Aim for 70 percent or higher in your first year","Are there any expenses you can cut without impacting service quality?","If you are not yet profitable look at two levers: increasing revenue by closing more clients, or reducing costs by renegotiating contractor rates or eliminating unused tools"]},
+
+{p:3,w:13,d:89,type:'action',title:'Final outreach sprint — 100 messages in 5 days',
+tasks:["This week you are sending 20 outreach messages every single day Monday through Friday — 100 total","Split it across channels: Monday and Tuesday — Instagram DMs. Wednesday — cold emails. Thursday — LinkedIn messages. Friday — follow-ups on all unanswered messages from this week and the last 30 days","Track every single message in your sheet","Goal: book at least 3 discovery calls from this sprint","This sprint proves to yourself that you can generate leads on demand any time you need them — that knowledge alone changes how you feel about your business forever"]},
+
+{p:3,w:13,d:90,type:'lesson',title:'Day 90 — graduation and your next chapter',
+text:"Ninety days ago you had nothing. No clients, no portfolio, no tools, no process, and no proof. Today you have all of it.\n\nYou know how to run social media and paid ads. You know the language, the tools, the strategy, and the systems. You have real clients paying you real money every single month. You have a team member handling execution. You have SOPs that make your agency consistent and scalable. You have case studies that close deals. You have a referral system generating warm leads. You have a weekly routine that keeps everything running.\n\nHere is the truth about what comes next. The agencies that reach $10,000 per month and beyond all do the same things: they never stop reaching out to new prospects, they deliver results so consistently that clients stay for years, they raise their prices as their results get stronger, they hire carefully and train thoroughly, and they pick a niche and become the best agency in their city for that specific type of business. You now have everything you need. The only thing between you and $10,000 per month is showing up every day and doing the work.",
+qs:[{q:"What is the single most important habit that separates agencies that hit $10,000 per month from ones that stay stuck?",c:["Having the best graphic design skills","Spending money on paid ads for your own agency","Never stopping outreach even when you are busy with existing clients","Having the lowest prices in the market"],a:2,e:"Consistent outreach is the engine. The moment you stop reaching out you stop growing. The moment you stop growing you start shrinking because clients always churn eventually. Never stop the machine."},
+{q:"You now have 4 clients at $1,200 per month each. What is the single best thing you can do today to grow faster?",c:["Lower your prices to attract more clients","Ask every one of those 4 clients for a referral and a Google review today","Take a break — you deserve it","Hire two more VAs immediately"],a:1,e:"Your existing happy clients are your best growth engine. One email asking for referrals and reviews costs you 10 minutes and can generate leads that close at a much higher rate than any cold outreach. Do this every single quarter."}]}
+];
+
+var gDone=Array(90).fill(false);
+var gPts=0;
+var selMap={};
+
+window.showPhase=function(n,btn){
+  document.querySelectorAll('.phase-pnl').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.ptab').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('phase'+n).classList.add('on');
+  btn.classList.add('on');
+};
+
+function buildPhase(p){
+  var el=document.getElementById('phase'+p);
+  var phDays=DATA.filter(function(d){return d.p===p;});
+  var weeks=[...new Set(phDays.map(function(d){return d.w;}))];
+  var html='';
+  var weekNames={1:'Week 1 — Understanding the business',2:'Week 2 — Making real content',3:'Week 3 — Learning paid ads',4:'Week 4 — Preparing to get clients',5:'Week 5 — Land your first client',6:'Week 6 — Deliver for client 1',7:'Week 7 — Build your weekly routine',8:'Week 8 — Get client 2',9:'Week 9 — Scale your outreach',10:'Week 10 — Build your SOPs',11:'Week 11 — Your first hire',12:'Week 12 — Hit your revenue targets',13:'Week 13 — Graduation'};
+  weeks.forEach(function(w){
+    html+='<div class="week-hdr">'+(weekNames[w]||'Week '+w)+'</div>';
+    phDays.filter(function(d){return d.w===w;}).forEach(function(d){html+=buildDayHTML(d);});
+  });
+  el.innerHTML=html;
+}
+
+function buildDayHTML(d){
+  var isDone=gDone[d.d-1];
+  var typeLabel=d.type==='lesson'?'<span class="day-type type-lesson">📖 Lesson + Quiz</span>':'<span class="day-type type-action">✅ Action day</span>';
+  var body='';
+  if(d.type==='lesson'){
+    var paras=(d.text||'').split('\n\n').filter(function(p){return p.trim();}).map(function(p){return '<p>'+p+'</p>';}).join('');
+    body+='<button class="read-btn" id="rb'+d.d+'" onclick="doRead('+d.d+')">▶ Press here to hear this lesson read out loud</button>';
+    body+='<button class="stop-rd" id="sb'+d.d+'" onclick="doStop('+d.d+')">■ Stop reading</button>';
+    body+='<div class="lesson-txt">'+paras+'</div>';
+    if(d.qs&&d.qs.length){
+      body+='<div class="quiz-wrap"><div class="quiz-lbl">📝 Answer these questions — then hit Check My Answers</div>';
+      d.qs.forEach(function(q,qi){
+        body+='<div class="qb"><div class="qt">'+(qi+1)+'. '+q.q+'</div><div class="ch-wrap">';
+        q.c.forEach(function(c,ci){
+          body+='<button class="ch" id="c'+d.d+'_'+qi+'_'+ci+'" onclick="doPick('+d.d+','+qi+','+ci+')"'+( isDone?' disabled':'')+'>'+
+            '<span class="cl">'+('ABCD'[ci])+'</span>'+c+'</button>';
+        });
+        body+='</div><div class="fb'+(isDone?' c show':'')+'" id="fb'+d.d+'_'+qi+'">'+(isDone?q.e:'')+'</div></div>';
+      });
+      body+='<button class="chk-btn" id="cbtn'+d.d+'" onclick="doCheck('+d.d+')" disabled'+(isDone?' style="display:none"':'')+'>✔ Check My Answers</button>';
+      body+='<div class="res-box" id="res'+d.d+'"></div>';
+      body+='</div>';
+    }
+  } else {
+    body+='<ul class="task-list">';
+    (d.tasks||[]).forEach(function(t,ti){
+      body+='<li class="task-item"><span class="task-cb" id="tc'+d.d+'_'+ti+'" onclick="toggleTask('+d.d+','+ti+','+d.tasks.length+')"></span><span class="task-txt">'+t+'</span></li>';
+    });
+    body+='</ul>';
+    body+='<button class="mark-btn" id="mbtn'+d.d+'" onclick="markDone('+d.d+')">Mark this day as complete</button>';
+  }
+  return '<div class="day-row" id="day'+d.d+'">'+
+    '<div class="day-head" onclick="toggleDay('+d.d+')">'+
+      '<div class="day-num'+(isDone?' done-num':'')+'" id="dn'+d.d+'"><span>Day '+d.d+'</span></div>'+
+      '<div class="day-info"><div class="day-title">'+d.title+'</div>'+typeLabel+'</div>'+
+      (isDone?'<span class="done-check">✓</span>':'')+
+      '<span class="chev" id="chev'+d.d+'">▼</span>'+
+    '</div>'+
+    '<div class="day-body" id="body'+d.d+'">'+body+'</div>'+
+  '</div>';
+}
+
+window.toggleDay=function(d){
+  var body=document.getElementById('body'+d);
+  var chev=document.getElementById('chev'+d);
+  if(!body)return;
+  var open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  if(chev)chev.classList.toggle('open',!open);
+};
+
+window.doPick=function(d,qi,ci){
+  if(!selMap[d])selMap[d]={};
+  selMap[d][qi]=ci;
+  var qCount=DATA.find(function(x){return x.d===d;}).qs.length;
+  for(var k=0;k<4;k++){var b=document.getElementById('c'+d+'_'+qi+'_'+k);if(b)b.className='ch'+(k===ci?' sel':'');}
+  var all=true;
+  for(var i=0;i<qCount;i++){if((selMap[d]||{})[i]===undefined){all=false;break;}}
+  var cb=document.getElementById('cbtn'+d);if(cb)cb.disabled=!all;
+};
+
+window.doCheck=function(d){
+  var day=DATA.find(function(x){return x.d===d;});
+  var correct=0;
+  day.qs.forEach(function(q,qi){
+    var chosen=(selMap[d]||{})[qi];
+    var ok=chosen===q.a;
+    if(ok)correct++;
+    for(var ci=0;ci<q.c.length;ci++){
+      var b=document.getElementById('c'+d+'_'+qi+'_'+ci);
+      if(b){b.disabled=true;b.className='ch'+(ci===q.a?' correct':(ci===chosen&&!ok?' wrong':''));}
+    }
+    var fb=document.getElementById('fb'+d+'_'+qi);
+    if(fb){fb.textContent=(ok?'✓ Correct! ':'✗ Not quite. ')+q.e;fb.className='fb '+(ok?'c':'w')+' show';}
+  });
+  var earned=correct*10;gPts+=earned;
+  document.getElementById('gpts').textContent=gPts;
+  var pct=Math.round(correct/day.qs.length*100),pass=pct>=75;
+  var res=document.getElementById('res'+d);
+  if(res){res.textContent=correct+'/'+day.qs.length+' correct ('+pct+'%) — '+(pass?'Great work! +'+earned+' points':'Review the lesson and keep going.');res.className='res-box '+(pass?'pass':'fail');res.style.display='block';}
+  var cb=document.getElementById('cbtn'+d);if(cb)cb.style.display='none';
+  markComplete(d);
+  say('You got '+correct+' out of '+day.qs.length+' correct. '+(pass?'Excellent work. Move to the next day.':'Re-read the lesson and keep going. You can do this.'));
+};
+
+window.toggleTask=function(d,ti,total){
+  var cb=document.getElementById('tc'+d+'_'+ti);
+  if(cb)cb.classList.toggle('checked');
+  var allChecked=true;
+  for(var i=0;i<total;i++){var c=document.getElementById('tc'+d+'_'+i);if(!c||!c.classList.contains('checked')){allChecked=false;break;}}
+  if(allChecked){markComplete(d);var mb=document.getElementById('mbtn'+d);if(mb){mb.textContent='✓ All tasks done — Day complete!';mb.classList.add('marked');}}
+};
+
+window.markDone=function(d){
+  var btn=document.getElementById('mbtn'+d);
+  if(btn){btn.textContent='✓ Day complete';btn.classList.add('marked');}
+  markComplete(d);
+};
+
+function markComplete(d){
+  var idx=d-1;
+  if(gDone[idx])return;
+  gDone[idx]=true;
+  var dn=document.getElementById('dn'+d);if(dn)dn.classList.add('done-num');
+  var drow=document.getElementById('day'+d);
+  if(drow){var head=drow.querySelector('.day-head');if(head&&!head.querySelector('.done-check')){var chk=document.createElement('span');chk.className='done-check';chk.textContent='✓';head.insertBefore(chk,head.querySelector('.chev'));}}
+  var n=gDone.filter(Boolean).length;
+  var pf=document.getElementById('gpf');if(pf)pf.style.width=Math.round(n/90*100)+'%';
+  var pl=document.getElementById('gpl');if(pl)pl.textContent=n+' of 90 days complete';
+}
+
+window.doRead=function(d){
+  doStop(d);
+  var day=DATA.find(function(x){return x.d===d;});
+  var txt='Day '+d+'. '+day.title+'. '+(day.text||'').replace(/\n\n/g,' ');
+  var rb=document.getElementById('rb'+d),sb=document.getElementById('sb'+d);
+  if(rb){rb.textContent='🔊 Reading now...';rb.classList.add('reading');}
+  if(sb)sb.style.display='flex';
+  say(txt,d);
+};
+
+window.doStop=function(d){
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  if(d){var rb=document.getElementById('rb'+d),sb=document.getElementById('sb'+d);if(rb){rb.textContent='▶ Press here to hear this lesson read out loud';rb.classList.remove('reading');}if(sb)sb.style.display='none';}
+};
+
+function say(txt,d){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(txt);
+  u.rate=0.9;u.pitch=1;u.volume=1;
+  try{
+    var vs=window.speechSynthesis.getVoices();
+    var v=vs.find(function(x){return x.name==='Samantha';})
+      ||vs.find(function(x){return x.name==='Alex';})
+      ||vs.find(function(x){return x.lang&&x.lang.startsWith('en-US');})
+      ||vs.find(function(x){return x.lang&&x.lang.startsWith('en');});
+    if(v)u.voice=v;
+  }catch(e){}
+  u.onend=u.onerror=function(){if(d)doStop(d);};
+  window.speechSynthesis.speak(u);
+}
+
+buildPhase(1);buildPhase(2);buildPhase(3);
+try{window.speechSynthesis.getVoices();}catch(e){}
+</script>
+</body>
+</html>
