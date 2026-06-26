@@ -1,0 +1,20 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Netlify
+        run: |
+          zip deploy.zip index.html
+          curl -s -X POST "https://api.netlify.com/api/v1/sites/72cc02bd-bdf6-4bad-b353-c3df48f73c98/deploys" \
+            -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            --data-binary @deploy.zip | python3 -c "import sys,json; d=json.load(sys.stdin); print('State:', d.get('state','unknown'))"
