@@ -206,6 +206,311 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div id="phase3" class="phase-pnl"></div>
 <div id="phasetools" class="phase-pnl">
 
+<!-- ====== VISUAL WORKFLOW GUIDES ====== -->
+<div style="margin-bottom:24px;">
+  <div style="font-size:11px;font-weight:600;color:#666;letter-spacing:.08em;text-transform:uppercase;padding:6px 0;margin:0 0 12px;border-bottom:1px solid #222;">STEP-BY-STEP VISUAL WORKFLOWS</div>
+
+  <!-- Workflow tab pills -->
+  <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;">
+    <button onclick="showWF('ig',this)" id="wftab-ig" style="font-size:12px;font-weight:500;padding:7px 14px;border-radius:7px;border:1px solid #C9FF57;color:#C9FF57;background:#0A0A0A;cursor:pointer;">📸 Instagram Workflow</button>
+    <button onclick="showWF('ads',this)" id="wftab-ads" style="font-size:12px;font-weight:500;padding:7px 14px;border-radius:7px;border:1px solid #333;color:#666;background:transparent;cursor:pointer;">📘 Meta Ads Workflow</button>
+    <button onclick="showWF('onboard',this)" id="wftab-onboard" style="font-size:12px;font-weight:500;padding:7px 14px;border-radius:7px;border:1px solid #333;color:#666;background:transparent;cursor:pointer;">🤝 Client Onboarding</button>
+  </div>
+
+  <!-- Instagram Workflow -->
+  <div id="wf-ig" style="display:block;">
+    <div style="background:#0D0D0D;border:1px solid #1e1e1e;border-radius:12px;padding:20px;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,255,87,.6);margin-bottom:6px;">Complete Process · 5 Steps · ~2 hrs/week</div>
+        <div style="font-size:18px;font-weight:600;color:#fff;">Instagram Content <span style="color:#C9FF57;">Workflow</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px;">ChatGPT → Canva → CapCut → Buffer → Analytics</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <!-- Step -->
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">1</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🤖</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Write the Caption</div><div style="font-size:10px;color:rgba(201,255,87,.6);">ChatGPT — chat.openai.com</div></div></div>
+              <span style="font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid rgba(201,255,87,.2);color:rgba(201,255,87,.5);">Free</span>
+            </div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Open ChatGPT → paste: <em>"Write 3 Instagram captions for a [business type] in [city] using Problem-Agitate-Solution. End with a call to action. Add 8 hashtags."</em></span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Pick the best one → copy to clipboard</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Sounds robotic? Say: <em>"Rewrite this to sound more conversational"</em></span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">📋 Output: Caption + hashtags ready</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">2</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🎨</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Design the Graphic</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Canva — canva.com</div></div></div>
+              <span style="font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid rgba(201,255,87,.2);color:rgba(201,255,87,.5);">Free</span>
+            </div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Create Design → search <em>Instagram Post</em> (1080×1080) → pick a template</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Swap photo, edit headline to 5 words or fewer, apply client brand colors</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Share → Download → PNG for graphics, MP4 for video posts</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">🖼 Output: 1080×1080 PNG ready to post</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">3</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">🎬</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Edit the Reel</div><div style="font-size:10px;color:rgba(201,255,87,.6);">CapCut — capcut.com · Video posts only</div></div></div>
+              <span style="font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid #222;color:#555;">Optional</span>
+            </div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>New Project → import clip → trim dead air from start and end</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Text → Auto Captions → Generate (captions appear automatically)</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Add bold text hook at 0:00 — first second must grab attention</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Audio → Sounds → trending track at 20% volume → Export 1080p</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">🎥 Output: 1080p MP4 under 60 seconds</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">4</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">📅</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Schedule the Post</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Buffer — buffer.com</div></div></div>
+              <span style="font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid rgba(201,255,87,.2);color:rgba(201,255,87,.5);">Free</span>
+            </div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Create Post → select client's Instagram → upload graphic → paste caption</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Schedule Post → pick date and time (best: Tue–Fri 9–11am or 7–9pm)</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Batch all 4–5 posts on Monday morning — done for the whole week</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">✅ Output: Posts auto-publish all week</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">📊</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Review Weekly Results</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Buffer Analytics + Meta Business Suite</div></div></div>
+              <span style="font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid rgba(201,255,87,.2);color:rgba(201,255,87,.5);">10 min</span>
+            </div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Buffer → Analytics → sort by Reach → find the #1 post this week</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Note what made it work: topic, format, hook style</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Next week: replicate the winning format with a new angle — repeat until growth</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">📈 Output: Smarter content every single week</div>
+          </div>
+        </div>
+
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:rgba(201,255,87,.04);border:1px solid rgba(201,255,87,.12);border-radius:10px;padding:14px 16px;margin-top:16px;">
+        <div><div style="font-size:12px;font-weight:500;color:#C9FF57;">Weekly Instagram System</div><div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:2px;">Monday batch session covers all posts for the week</div></div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="font-size:16px;font-weight:600;color:#C9FF57;">~2hrs</div><div style="font-size:9px;color:#555;letter-spacing:.04em;">per week</div></div>
+          <div style="text-align:center;"><div style="font-size:16px;font-weight:600;color:#C9FF57;">4–5</div><div style="font-size:9px;color:#555;letter-spacing:.04em;">posts/week</div></div>
+          <div style="text-align:center;"><div style="font-size:16px;font-weight:600;color:#C9FF57;">$0</div><div style="font-size:9px;color:#555;letter-spacing:.04em;">tool cost</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meta Ads Workflow -->
+  <div id="wf-ads" style="display:none;">
+    <div style="background:#0D0D0D;border:1px solid #1e1e1e;border-radius:12px;padding:20px;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,255,87,.6);margin-bottom:6px;">Complete Process · 6 Steps · First Campaign</div>
+        <div style="font-size:18px;font-weight:600;color:#fff;">Meta Ads <span style="color:#C9FF57;">Workflow</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px;">Research → Creative → Campaign Setup → Launch → Optimize</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">1</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">🔵</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Research Competitors</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Facebook Ad Library — facebook.com/ads/library</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Search the client's top competitor → see every ad they are running</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Note: what images they use, what headline style, what offer they promote</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Ads running 30+ days = proven winners — model your creative on those</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">2</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">🎨</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Build the Ad Creative</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Canva → 1080×1080 or 1080×1920 Story size</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Headline: 5 words max — lead with the result or the pain point</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Use real photos of the client's work — stock photos convert poorly for local ads</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Write body copy in ChatGPT using PAS → keep under 150 words</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">3</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">📘</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Set Up the Campaign</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Meta Ads Manager — business.facebook.com</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span><strong style="color:#aaa;">Campaign:</strong> Objective = Leads · Name it: BusinessName_Goal_Month_Year</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span><strong style="color:#aaa;">Ad Set:</strong> Location = 10–15 mile radius · Age/gender matching the customer · Budget $10–$15/day</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span><strong style="color:#aaa;">Ad:</strong> Upload creative → paste headline + body copy → CTA: "Get Quote" or "Learn More"</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">🚀 Click Publish — ad goes live within 24 hrs</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">4</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">⏳</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Let It Run 3–5 Days</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Do not touch it — the algorithm needs data</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Meta needs 50+ events to exit the learning phase — resist changing anything early</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>If zero leads after Day 3 with normal spend, pause and swap the creative only</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">5</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">📊</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Weekly Optimization</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Every Monday — 15 minutes</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Check: Cost Per Lead (CPL) — target varies by industry ($10–$40 is typical for local)</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>CPL too high? Pause the ad, create a new creative, restart — keep audience the same</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Winning ad? Duplicate the ad set, raise budget 20% — never more than 20% at once</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">📹</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Send Monthly Report</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Loom — record a 3-min screen walkthrough</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Open Loom → Screen + Camera → record yourself walking through Ads Manager</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Say: <em>"You got 18 leads. Each cost $14. If you close 3 at $400 each = $1,200 from $252 spent."</em></span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Paste Loom link in email → this one step is your best retention tool</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">📩 Output: Client sees ROI — retains every time</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Onboarding Workflow -->
+  <div id="wf-onboard" style="display:none;">
+    <div style="background:#0D0D0D;border:1px solid #1e1e1e;border-radius:12px;padding:20px;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,255,87,.6);margin-bottom:6px;">Complete Process · 5 Steps · Close to Kickoff</div>
+        <div style="font-size:18px;font-weight:600;color:#fff;">Client Onboarding <span style="color:#C9FF57;">Workflow</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px;">Discovery Call → Proposal → Contract → Invoice → Kickoff</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">1</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">🗺</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Find the Prospect</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Google Maps + Facebook Ad Library</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Google Maps → search [city] + [business type] → look for businesses with under 50 reviews</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Check their Instagram — low followers, old posts, or no account = perfect prospect</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Ad Library — if they have no active ads, lead with that on the call</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">2</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">📞</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Discovery Call</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Phone or Zoom · 20–30 minutes</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Ask: <em>"What's your biggest challenge getting new customers right now?"</em> — then listen</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Show them their competitor's ads from Ad Library — <em>"They're spending money every day. You're not."</em></span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>End with: <em>"I'll send you a proposal by tomorrow — does that work?"</em></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">3</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">✍️</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Send Contract</div><div style="font-size:10px;color:rgba(201,255,87,.6);">HelloSign — hellosign.com</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Send for Signature → client gets an email → signs in 2 clicks — no printing needed</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Contract must include: services, monthly fee, 30-day cancellation notice, ownership of ad accounts</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Both parties receive signed PDF automatically — saved to Google Drive client folder</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;position:relative;">
+          <div style="position:absolute;left:15px;top:36px;width:2px;height:calc(100% + 4px);background:linear-gradient(to bottom,#C9FF57,rgba(201,255,87,.1));z-index:0;"></div>
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;flex-shrink:0;">4</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">💰</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Collect First Payment</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Wave — wave.com · Pay before work starts</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Wave → Sales → Invoices → Create Invoice → add client → add your monthly fee</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Set to Recurring Monthly so it auto-sends on the 1st of every month</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Rule: no work starts until first invoice is paid — no exceptions</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:#C9FF57;color:#0A0A0A;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
+          <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:18px;">🚀</span><div><div style="font-size:13px;font-weight:600;color:#f0f0f0;">Kickoff &amp; Access</div><div style="font-size:10px;color:rgba(201,255,87,.6);">Google Drive + Meta Business Suite</div></div></div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;">
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Create their Google Drive folder: Brand Assets / Content Calendar / Ad Creatives / Reports / Contracts</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Request access to their Facebook Page and Instagram in Meta Business Suite</span></div>
+              <div style="display:flex;gap:7px;margin-bottom:4px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Collect brand assets: logo (PNG), brand colors (hex codes), 10–20 product/business photos</span></div>
+              <div style="display:flex;gap:7px;"><span style="color:#C9FF57;margin-top:5px;font-size:8px;">●</span><span>Send a Loom welcome video introducing yourself and the plan for Month 1</span></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(201,255,87,.06);border:1px solid rgba(201,255,87,.12);border-radius:20px;padding:4px 10px;font-size:10px;color:#C9FF57;margin-top:8px;">✅ Client is live — begin Month 1 content</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showWF(id, btn) {
+  ['ig','ads','onboard'].forEach(function(k){
+    document.getElementById('wf-'+k).style.display = 'none';
+    var t = document.getElementById('wftab-'+k);
+    t.style.borderColor = '#333'; t.style.color = '#666'; t.style.background = 'transparent';
+  });
+  document.getElementById('wf-'+id).style.display = 'block';
+  btn.style.borderColor = '#C9FF57'; btn.style.color = '#C9FF57'; btn.style.background = '#0A0A0A';
+}
+</script>
+
 <div style="margin-bottom:18px;">
   <div style="font-size:11px;font-weight:600;color:#666;letter-spacing:.08em;text-transform:uppercase;padding:6px 0;margin:14px 0 10px;border-bottom:1px solid #222;">CONTENT CREATION TOOLS</div>
   <div style="display:grid;gap:8px;">
