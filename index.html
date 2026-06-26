@@ -82,7 +82,54 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .mark-btn{width:100%;padding:11px;margin-top:12px;background:#111;color:#666;border:1px solid #2a2a2a;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;}
 .mark-btn:hover{border-color:#444;color:#aaa;}
 .mark-btn.marked{background:#0f1f0a;color:#8ebe2c;border-color:#2a4a15;}
-@media(max-width:600px){.hdr{flex-direction:column;align-items:flex-start;}.phase-tabs{gap:4px;}.ptab{font-size:12px;padding:7px 12px;}}
+/* ── Responsive layout classes ── */
+.splash-main-grid{display:grid;grid-template-columns:1fr 1fr;}
+.splash-learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.splash-phase-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:0.5px solid rgba(255,255,255,.06);position:relative;z-index:2;}
+.tool-builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+.tool-service-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.tool-pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* ── Tablet (iPad portrait) ── */
+@media(max-width:820px){
+  body{padding:10px;}
+  .hdr{flex-direction:column;align-items:flex-start;}
+  .phase-tabs{gap:4px;flex-wrap:wrap;}
+  .ptab{font-size:12px;padding:7px 11px;}
+  .splash-main-grid{grid-template-columns:1fr!important;}
+  .splash-learn-grid{grid-template-columns:1fr 1fr!important;}
+  .splash-phase-grid{grid-template-columns:1fr!important;}
+  .splash-phase-grid > div{border-right:none!important;border-bottom:0.5px solid rgba(255,255,255,.06);}
+  .splash-phase-grid > div:last-child{border-bottom:none;}
+  .tool-builder-grid{grid-template-columns:1fr 1fr!important;}
+  .tool-service-grid{grid-template-columns:1fr 1fr!important;}
+  .tool-pricing-grid{grid-template-columns:1fr 1fr!important;}
+  .splash-left{border-right:none!important;border-bottom:0.5px solid rgba(255,255,255,.06);}
+}
+
+/* ── Mobile (phone) ── */
+@media(max-width:500px){
+  body{padding:8px;}
+  .hdr{padding:10px 12px;}
+  .phase-tabs{gap:3px;}
+  .ptab{font-size:11px;padding:6px 9px;}
+  .splash-main-grid{grid-template-columns:1fr!important;}
+  .splash-learn-grid{grid-template-columns:1fr!important;}
+  .splash-phase-grid{grid-template-columns:1fr!important;}
+  .splash-phase-grid > div{border-right:none!important;border-bottom:0.5px solid rgba(255,255,255,.06);}
+  .tool-builder-grid{grid-template-columns:1fr!important;}
+  .tool-service-grid{grid-template-columns:1fr!important;}
+  .tool-pricing-grid{grid-template-columns:1fr!important;}
+  .splash-left{border-right:none!important;border-bottom:0.5px solid rgba(255,255,255,.06);}
+  .splash-left{padding:20px 16px!important;}
+  #splash{padding:8px!important;}
+  .day-head{padding:10px 12px;gap:8px;}
+  .day-num{width:32px;height:32px;}
+  .day-title{font-size:12px;}
+  .wf-step-row{flex-direction:column!important;}
+  .splash-headline{font-size:28px!important;}
+  .ptab{font-size:10px!important;padding:5px 8px!important;}
+}
 </style>
 </head>
 <body>
@@ -100,10 +147,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div style="font-size:10px;border-radius:20px;padding:4px 10px;border:0.5px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);">Free</div>
   </div>
 </div>
-<div style="display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:2;">
-  <div style="padding:28px 24px;border-right:0.5px solid rgba(255,255,255,.06);">
+<div class="splash-main-grid" style="position:relative;z-index:2;">
+  <div class="splash-left" style="padding:28px 24px;border-right:0.5px solid rgba(255,255,255,.06);">
     <div style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,255,87,.6);margin-bottom:12px;">Complete step-by-step training program</div>
-    <div style="font-size:38px;font-weight:500;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:10px;">Build a<br><span style="color:#C9FF57;">$10K/mo</span><br>Agency</div>
+    <div class="splash-headline" style="font-size:38px;font-weight:500;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:10px;">Build a<br><span style="color:#C9FF57;">$10K/mo</span><br>Agency</div>
     <div style="font-size:12px;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:20px;">Learn social media management and paid ads from zero. Land your first client, deliver results, scale to a full team — day by day in plain English.</div>
     <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
       <div style="background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.08);border-radius:7px;padding:7px 12px;text-align:center;"><div style="font-size:18px;font-weight:500;color:#C9FF57;">90</div><div style="font-size:9px;color:rgba(255,255,255,.3);margin-top:1px;letter-spacing:.04em;">Days</div></div>
@@ -135,7 +182,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
   <div style="padding:20px 20px 16px;">
     <div style="font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px;">What you will learn</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+    <div class="splash-learn-grid">
       <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.5);"><span style="color:#C9FF57;font-size:13px;">✓</span>Facebook &amp; Instagram ads</div>
       <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.5);"><span style="color:#C9FF57;font-size:13px;">✓</span>Google Local Service Ads</div>
       <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.5);"><span style="color:#C9FF57;font-size:13px;">✓</span>TikTok ads strategy</div>
@@ -155,7 +202,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
 </div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;position:relative;z-index:2;border-top:0.5px solid rgba(255,255,255,.06);">
+<div class="splash-phase-grid">
   <div style="padding:16px 18px;border-right:0.5px solid rgba(255,255,255,.06);">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><div style="font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#C9FF57;">Phase 1 — Learn</div><div style="font-size:9px;color:rgba(255,255,255,.25);">Days 1–30</div></div>
     <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:8px;">Master the fundamentals</div>
@@ -843,7 +890,7 @@ function showWF(id, btn) {
 
 <div style="background:#0D0D0D;border:1px solid rgba(201,255,87,.2);border-radius:10px;padding:16px;margin-top:8px;">
   <div style="font-size:13px;font-weight:500;color:#C9FF57;margin-bottom:8px;">Quick Reference — All Tool Links</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+  <div class="tool-builder-grid" style="gap:6px;margin-bottom:0;">
     <a href="https://www.canva.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#111;border:1px solid #222;border-radius:7px;text-decoration:none;color:#aaa;font-size:12px;">🎨 Canva — canva.com</a>
     <a href="https://www.capcut.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#111;border:1px solid #222;border-radius:7px;text-decoration:none;color:#aaa;font-size:12px;">🎬 CapCut — capcut.com</a>
     <a href="https://chat.openai.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#111;border:1px solid #222;border-radius:7px;text-decoration:none;color:#aaa;font-size:12px;">🤖 ChatGPT — chat.openai.com</a>
@@ -875,7 +922,7 @@ function showWF(id, btn) {
   </div>
 
   <!-- Builder Choice -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+  <div class="tool-builder-grid">
     <div style="background:#0D0D0D;border:1px solid #C9FF57;border-radius:10px;padding:16px;">
       <div style="font-size:12px;font-weight:700;color:#C9FF57;margin-bottom:4px;">⚡ CARRD — Best for Beginners</div>
       <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px;line-height:1.5;">Free plan available. Drag-and-drop. Live in 15 minutes. Perfect if you want something clean and fast.</div>
@@ -923,7 +970,7 @@ function showWF(id, btn) {
       <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
         <div style="font-size:13px;font-weight:600;color:#f0f0f0;margin-bottom:6px;">💼 Services Section — What You Offer</div>
         <div style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:10px;">List your 2–3 core services as simple cards. Keep it short — one sentence per service.</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <div class="tool-service-grid">
           <div style="background:#0A0A0A;border:1px solid #222;border-radius:8px;padding:10px;text-align:center;">
             <div style="font-size:18px;margin-bottom:4px;">📱</div>
             <div style="font-size:11px;font-weight:600;color:#fff;">Social Media Management</div>
@@ -964,7 +1011,7 @@ function showWF(id, btn) {
       <div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:14px;flex:1;margin-bottom:12px;">
         <div style="font-size:13px;font-weight:600;color:#f0f0f0;margin-bottom:6px;">💵 Pricing Section — Keep It Simple</div>
         <div style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:8px;">Show 2 tiers max. Most people buy the middle option — make it obvious which is the best value.</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="tool-pricing-grid">
           <div style="background:#0A0A0A;border:1px solid #222;border-radius:8px;padding:12px;">
             <div style="font-size:11px;color:#aaa;font-weight:600;">STARTER</div>
             <div style="font-size:22px;font-weight:700;color:#fff;margin:6px 0;">$500<span style="font-size:12px;color:rgba(255,255,255,.3);">/mo</span></div>
