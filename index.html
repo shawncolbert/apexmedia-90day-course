@@ -296,6 +296,54 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
+<!-- ── Email capture ── -->
+<div style="background:#0A0A0A;border:1px solid rgba(201,255,87,.25);border-radius:12px;padding:20px;margin-top:12px;text-align:center;">
+  <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Get Course Updates & Free Business Tips</div>
+  <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;">New modules, templates, and strategies — delivered free to your inbox.</div>
+  <form onsubmit="handleEmailSignup(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;">
+    <input type="email" id="email-input" placeholder="Enter your email address" required style="flex:1;min-width:200px;padding:11px 14px;background:#111;border:1px solid #333;border-radius:8px;color:#fff;font-size:13px;outline:none;"/>
+    <button type="submit" style="background:#C9FF57;color:#0A0A0A;border:none;border-radius:8px;padding:11px 20px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;">Get Updates →</button>
+  </form>
+  <div id="email-confirm" style="display:none;margin-top:12px;font-size:12px;color:#C9FF57;font-weight:600;">✓ You're in! Check shawncolbert1971@gmail.com for a welcome note.</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.2);margin-top:10px;">No spam. Unsubscribe any time. Your email is never shared.</div>
+</div>
+
+<!-- ── Day 1 Free Preview ── -->
+<div style="background:#0A0A0A;border:1px solid #1e1e1e;border-radius:12px;overflow:hidden;margin-top:12px;">
+  <div style="background:linear-gradient(135deg,#111,#0D0D0D);padding:16px 20px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,255,87,.6);margin-bottom:4px;">Free Preview — See Inside Before You Start</div>
+      <div style="font-size:15px;font-weight:600;color:#fff;">Day 1: What Does an Ad Agency Do?</div>
+    </div>
+    <div style="background:rgba(201,255,87,.1);border:1px solid rgba(201,255,87,.2);border-radius:6px;padding:4px 12px;font-size:11px;color:#C9FF57;font-weight:600;">Lesson · Phase 1</div>
+  </div>
+  <div style="padding:20px;">
+    <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.9;margin-bottom:16px;">
+      <p style="margin-bottom:10px;">An ad agency runs advertising for other businesses. That is the whole job in one sentence.</p>
+      <p style="margin-bottom:10px;">A restaurant owner is great at cooking but has no idea how to get customers on Instagram or run Facebook ads. That is where you come in. You handle the marketing. They pay you every single month.</p>
+      <p style="margin-bottom:10px;">You will sell two things. <strong style="color:#f0f0f0;">Social media management</strong> — you post content, write captions, make graphics, and handle everything on social media for a monthly fee. And <strong style="color:#f0f0f0;">paid ads management</strong> — you run Facebook and Google ads for clients. The business pays for the ads separately. You charge a monthly fee to manage and run those ads.</p>
+      <p>Your job is to get businesses more customers using the internet. Nothing more complicated than that.</p>
+    </div>
+    <!-- Mini quiz preview -->
+    <div style="background:#111;border:1px solid rgba(201,255,87,.15);border-radius:9px;padding:14px;margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:600;color:#C9FF57;margin-bottom:10px;">📝 Day 1 Quiz — Sample Question</div>
+      <div style="font-size:13px;font-weight:500;color:#f0f0f0;margin-bottom:10px;">What are the two core services you sell?</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="padding:9px 12px;border-radius:7px;border:1.5px solid #2a2a2a;background:#0D0D0D;font-size:12px;color:#aaa;">A. Web design and video editing</div>
+        <div style="padding:9px 12px;border-radius:7px;border:2px solid #C9FF57;background:#1a2800;font-size:12px;color:#f0f0f0;font-weight:500;">B. Social media management and paid ads management ✓</div>
+        <div style="padding:9px 12px;border-radius:7px;border:1.5px solid #2a2a2a;background:#0D0D0D;font-size:12px;color:#aaa;">C. Accounting and branding</div>
+        <div style="padding:9px 12px;border-radius:7px;border:1.5px solid #2a2a2a;background:#0D0D0D;font-size:12px;color:#aaa;">D. PR and event planning</div>
+      </div>
+      <div style="margin-top:10px;padding:9px 11px;border-radius:7px;background:#0f1f0a;color:#8ebe2c;border:1px solid #2a4a15;font-size:12px;line-height:1.6;">✓ Social media management and paid ads management. These two services alone can build a six-figure agency.</div>
+    </div>
+    <!-- CTA -->
+    <button onclick="document.getElementById('splash').style.display='none';document.getElementById('course').style.display='block';" style="width:100%;background:#C9FF57;color:#0A0A0A;border:none;border-radius:10px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;">
+      This is Day 1. All 90 days are inside — start now.
+      <span style="width:22px;height:22px;background:#0A0A0A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;">→</span>
+    </button>
+  </div>
+</div>
+
 <!-- ── FAQ ── -->
 <div style="background:#0A0A0A;border:1px solid #1e1e1e;border-radius:12px;padding:20px;margin-top:12px;">
   <div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:14px;">Frequently Asked Questions</div>
@@ -2069,6 +2117,17 @@ function say(txt,d){
   u.onend=u.onerror=function(){if(d)doStop(d);};
   window.speechSynthesis.speak(u);
 }
+
+window.handleEmailSignup=function(e){
+  e.preventDefault();
+  var email=document.getElementById('email-input').value;
+  var confirm=document.getElementById('email-confirm');
+  // Store locally so signups aren't lost
+  var list=JSON.parse(localStorage.getItem('apexmedia_emails')||'[]');
+  if(!list.includes(email)){list.push(email);localStorage.setItem('apexmedia_emails',JSON.stringify(list));}
+  document.getElementById('email-input').value='';
+  if(confirm)confirm.style.display='block';
+};
 
 buildPhase(1);buildPhase(2);buildPhase(3);
 
